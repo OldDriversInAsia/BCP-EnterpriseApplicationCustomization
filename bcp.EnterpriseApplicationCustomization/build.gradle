@@ -1,0 +1,32 @@
+group 'com.odib'
+version '0.0.1'
+def env = System.getProperty("env") ?: "dev"
+buildscript {
+    repositories {
+        mavenCentral()//依赖Maven仓库
+    }
+    dependencies {
+        //使用1.4.2.RELEASE版本的Spring框架
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.8'
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "src/main/profile/$env"]
+        }
+    }
+}
