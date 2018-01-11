@@ -2,29 +2,50 @@ group 'com.odib'
 version '0.0.1'
 def env = System.getProperty("env") ?: "dev"
 buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
     repositories {
-        mavenCentral()//依赖Maven仓库
+        // NOTE: You should declare only repositories that you need here
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "http://repo.spring.io/snapshot" }
     }
     dependencies {
-        //使用1.4.2.RELEASE版本的Spring框架
+        //使用1.5.9.RELEASE版本的Spring框架
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
     }
 }
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.odib.bcp.eac.MainApplication'
+        attributes 'Class-Path': 'bcp-eac.jar'
+    }
+}
+
 sourceCompatibility = 1.8
-//jar {
-//    baseName = bcp_eac
-//    version = 1.0
-//}
+targetCompatibility = 1.8
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '6.8'
-    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-web', version:'1.5.9.RELEASE'
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version:'1.1.1'
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-data-redis',version: '1.5.9.RELEASE'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.5'
+    compile group: 'com.alibaba', name:'fastjson', version:'1.2.44'
+    compile group: 'com.alibaba', name: 'druid', version: '1.1.6'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.8-dmr'
+
 }
 sourceSets {
     main {
