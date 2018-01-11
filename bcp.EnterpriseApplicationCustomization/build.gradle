@@ -21,7 +21,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
+springBoot {
+    executable = true
+}
 jar {
     manifest {
         attributes 'Main-Class': 'com.odib.bcp.eac.MainApplication'
