@@ -3,4 +3,4 @@
 *@author StarZou
 *@since 2014年5月8日 下午11:04:41
  **/
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;

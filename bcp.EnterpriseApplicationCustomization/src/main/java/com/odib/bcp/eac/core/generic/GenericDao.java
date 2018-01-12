@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;
 
 /**
  * 所有自定义Dao的顶级接口, 封装常用的增删查改操作, 可以通过Mybatis Generator Maven 插件自动生成Dao, 也可以手动编码,然后继承GenericDao 即可.

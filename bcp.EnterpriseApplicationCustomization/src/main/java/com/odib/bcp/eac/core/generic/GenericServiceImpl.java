@@ -1,7 +1,7 @@
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;
 
 
-import com.odib.bcp.eac.orm.mybatis.Page;
+import com.odib.bcp.eac.core.orm.mybatis.Page;
 
 import java.util.List;
 

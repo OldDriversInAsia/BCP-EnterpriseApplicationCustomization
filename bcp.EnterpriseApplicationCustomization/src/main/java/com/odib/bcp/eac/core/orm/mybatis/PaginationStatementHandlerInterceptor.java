@@ -1,8 +1,8 @@
-package com.odib.bcp.eac.orm.mybatis;
+package com.odib.bcp.eac.core.orm.mybatis;
 
 
-import com.odib.bcp.eac.orm.dialect.Dialect;
-import com.odib.bcp.eac.orm.dialect.DialectFactory;
+import com.odib.bcp.eac.core.orm.dialect.Dialect;
+import com.odib.bcp.eac.core.orm.dialect.DialectFactory;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;

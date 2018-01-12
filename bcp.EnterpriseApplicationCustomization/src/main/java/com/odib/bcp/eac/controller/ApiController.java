@@ -8,9 +8,10 @@
 package com.odib.bcp.eac.controller;
 
 import com.odib.bcp.eac.constant.ApiResultEnum;
-import com.odib.bcp.eac.generic.ApiResult;
+import com.odib.bcp.eac.core.generic.ApiResult;
 import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
+import com.odib.bcp.eac.model.vo.BaseUserVo;
 import com.odib.bcp.eac.service.BaseUserService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <br>
@@ -45,8 +47,16 @@ public class ApiController {
         ApiResult<BaseUser> result = ApiResultEnum.SUCCESS.build(baseUser);
         return result;
     }
-
-//    public ApiResult<Integer> insertUser(BaseUserDto baseUserDto){
-//
-//    }
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    public ApiResult<List<BaseUserVo>> selectUserList(){
+        return baseUserService.selectUserVoList();
+    }
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public ApiResult<Integer> insertUser(BaseUserDto baseUserDto){
+        return baseUserService.insert(baseUserDto);
+    }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ApiResult<BaseUserVo> login(String loginName, String password){
+        return baseUserService.login(loginName, password);
+    }
 }

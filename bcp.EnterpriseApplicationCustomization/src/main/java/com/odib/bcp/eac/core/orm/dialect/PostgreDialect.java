@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.orm.dialect;
+package com.odib.bcp.eac.core.orm.dialect;
 
 /**
  * Postgre 数据库 方言

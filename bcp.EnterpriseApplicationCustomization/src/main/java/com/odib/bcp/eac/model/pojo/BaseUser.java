@@ -83,6 +83,11 @@ public class BaseUser {
      */
     private Date updatedAt;
 
+    public interface Status{
+        Integer OPEN = 1;
+        Integer BLOCK = 2;
+        Integer DELETE = 3;
+    }
     /**
      * 编号(自增)
      * @return id_no 编号(自增)

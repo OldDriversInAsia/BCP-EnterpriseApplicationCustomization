@@ -5,7 +5,7 @@
  * Date: 2017/12/6 17:47
  * Description: 返回结果
  */
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;
 
 /**
  * <br>

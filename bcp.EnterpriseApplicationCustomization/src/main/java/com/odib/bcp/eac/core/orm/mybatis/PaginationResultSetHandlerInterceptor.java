@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.orm.mybatis;
+package com.odib.bcp.eac.core.orm.mybatis;
 
 import org.apache.ibatis.executor.resultset.DefaultResultSetHandler;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;

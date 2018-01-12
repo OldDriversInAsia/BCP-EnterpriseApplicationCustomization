@@ -1,71 +1,45 @@
 /**
  * Copyright (C), 2015-2018, 北京老司机
- * FileName: BaseUserDto
+ * FileName: BaseUserVo
  * Author: lizhuo
- * Date: 2018/1/10 12:08
- * Description: 用户信息前端接收类
+ * Date: 2018/1/12 14:44
+ * Description: 基础用户展示对象
  */
-package com.odib.bcp.eac.model.dto;
+package com.odib.bcp.eac.model.vo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
 /**
  * <br>
- * 〈用户信息前端接收类〉
+ * 〈基础用户展示对象〉
  *  @author lizhuo
- * @create 2018/1/10
+ * @create 2018/1/12
  * @since 1.0.0
  */
-public class BaseUserDto {
-    /**
-     * 毕业学校
-     */
+public class BaseUserVo {
+    @JsonProperty("id_no")
+    private Integer idNo;
     private String graduate;
-
-    /**
-     * 0:中专及以下;1:高中;2:大专;3:本科;4:硕士;5:博士
-     */
     private Integer diploma;
-
-    /**
-     * 电话
-     */
     private String telephone;
-
-    /**
-     * 0:男;1:女
-     */
     private Integer gender;
-
-    /**
-     * 出生时间
-     */
-    private Long birthday;
-
-    /**
-     * 姓名
-     */
+    private Date birthday;
+    private String loginname;
     private String name;
-
-    /**
-     * 姓名拼音
-     */
     private String pinyin;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 邮箱
-     */
+    private Integer status;
     private String email;
-
-    /**
-     * 身份证号
-     */
     private String identity;
+
+    public Integer getIdNo() {
+        return idNo;
+    }
+
+    public void setIdNo(Integer idNo) {
+        this.idNo = idNo;
+    }
 
     public String getGraduate() {
         return graduate;
@@ -99,12 +73,20 @@ public class BaseUserDto {
         this.gender = gender;
     }
 
-    public Long getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Long birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getLoginname() {
+        return loginname;
+    }
+
+    public void setLoginname(String loginname) {
+        this.loginname = loginname;
     }
 
     public String getName() {
@@ -123,12 +105,12 @@ public class BaseUserDto {
         this.pinyin = pinyin;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getEmail() {

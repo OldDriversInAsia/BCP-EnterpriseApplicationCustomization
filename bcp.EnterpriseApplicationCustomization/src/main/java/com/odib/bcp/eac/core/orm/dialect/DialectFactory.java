@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.orm.dialect;
+package com.odib.bcp.eac.core.orm.dialect;
 
 import org.apache.ibatis.session.Configuration;
 

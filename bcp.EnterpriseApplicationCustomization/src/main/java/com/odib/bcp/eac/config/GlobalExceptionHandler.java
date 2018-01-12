@@ -8,7 +8,8 @@
 package com.odib.bcp.eac.config;
 
 import com.odib.bcp.eac.constant.ApiResultEnum;
-import com.odib.bcp.eac.generic.ApiResult;
+import com.odib.bcp.eac.exception.ApiException;
+import com.odib.bcp.eac.core.generic.ApiResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -29,9 +30,15 @@ public class GlobalExceptionHandler {
     private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @ExceptionHandler
     @ResponseBody
-    public ApiResult<Object> errorHandler(HttpServletRequest req, Exception e) throws Exception{
+    public ApiResult<?> errorHandler(HttpServletRequest req, Exception e) throws Exception{
         log.error("server error:{}", e);
-        ApiResult<Object> result = ApiResultEnum.FAILED.build();
+        ApiResult<?> result;
+        if(e instanceof ApiException){
+            ApiException apiException = (ApiException) e;
+            result = apiException.getApiResultEnum().build();
+        }else{
+            result = ApiResultEnum.FAILED.build();
+        }
         return result;
     }
 }

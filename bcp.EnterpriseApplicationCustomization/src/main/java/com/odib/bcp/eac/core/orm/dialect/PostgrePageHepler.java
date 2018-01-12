@@ -1,18 +1,16 @@
-package com.odib.bcp.eac.orm.dialect;
+package com.odib.bcp.eac.core.orm.dialect;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author StarZou
- * @since 2014年5月18日 下午1:33:01
- **/
-public class MySql5PageHepler {
+@since 2014年7月2日 上午10:30:14
+**/
+public class PostgrePageHepler {
     /**
      * 得到查询总数的sql
      */
     public static String getCountString(String querySelect) {
-
         querySelect = getLineSql(querySelect);
         int orderIndex = getLastOrderInsertPoint(querySelect);
 
@@ -38,7 +36,7 @@ public class MySql5PageHepler {
             orderIndex = querySelect.length();
         }
         if (!isBracketCanPartnership(querySelect.substring(orderIndex, querySelect.length()))) {
-            throw new RuntimeException("My SQL 分页必须要有Order by 语句!");
+            throw new RuntimeException("Postgre 分页必须要有Order by 语句!");
         }
         return orderIndex;
     }
@@ -53,13 +51,9 @@ public class MySql5PageHepler {
      * @return 分页SQL
      */
     public static String getLimitString(String querySelect, int offset, int limit) {
-
         querySelect = getLineSql(querySelect);
-
-        String sql = querySelect + " limit " + offset + " ," + limit;
-
+        String sql = querySelect + " LIMIT " + limit + " OFFSET " + offset;
         return sql;
-
     }
 
     /**

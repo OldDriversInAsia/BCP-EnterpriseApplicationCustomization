@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.orm.dialect;
+package com.odib.bcp.eac.core.orm.dialect;
 
 /**
  * 数据库方言抽象类

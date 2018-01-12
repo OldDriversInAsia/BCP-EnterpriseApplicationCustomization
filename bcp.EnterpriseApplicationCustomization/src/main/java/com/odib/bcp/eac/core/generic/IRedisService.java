@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.generic;
+package com.odib.bcp.eac.core.generic;
 
 /**
  * 所有自定义枚举类型实现该接口

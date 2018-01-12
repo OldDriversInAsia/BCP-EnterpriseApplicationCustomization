@@ -8,7 +8,7 @@
 package com.odib.bcp.eac.constant;
 
 import com.alibaba.fastjson.JSONObject;
-import com.odib.bcp.eac.generic.ApiResult;
+import com.odib.bcp.eac.core.generic.ApiResult;
 
 /**
  * <br>
@@ -26,6 +26,26 @@ public enum ApiResultEnum {
      * 请求失败，通常是服务器内部错误
      */
     FAILED("-1", "暂无数据,请稍后再试"),
+    /**
+     * 密码错误
+     */
+    LOGIN_100001("100001", "密码错误"),
+    /**
+     * 用户不存在
+     */
+    LOGIN_100002("100002", "用户不存在"),
+    /**
+     * 验证码错误
+     */
+    LOGIN_100003("100003", "验证码错误"),/**
+     * token校验失败
+     */
+    LOGIN_100004("100004", "token校验失败"),/**
+     * 用户已经停用
+     */
+    LOGIN_100005("100005", "用户已经停用"),
+
+
     ;
     private String code;
     private String message;

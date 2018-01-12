@@ -46,8 +46,8 @@ dependencies {
     compile group: 'org.mybatis', name: 'mybatis', version: '3.4.5'
     compile group: 'com.alibaba', name:'fastjson', version:'1.2.44'
     compile group: 'com.alibaba', name: 'druid', version: '1.1.6'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.8-dmr'
-
 }
 sourceSets {
     main {

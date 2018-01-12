@@ -1,4 +1,4 @@
-package com.odib.bcp.eac.orm.mybatis;
+package com.odib.bcp.eac.core.orm.mybatis;
 
 import org.apache.ibatis.session.RowBounds;
 
