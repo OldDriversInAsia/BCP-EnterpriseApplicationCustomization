@@ -8,6 +8,7 @@
 package com.odib.bcp.eac.service.impl;
 
 import com.odib.bcp.eac.constant.ApiResultEnum;
+import com.odib.bcp.eac.constant.CommonValue;
 import com.odib.bcp.eac.dao.BaseUserMapper;
 import com.odib.bcp.eac.exception.ApiException;
 import com.odib.bcp.eac.core.generic.ApiResult;
@@ -17,9 +18,15 @@ import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
 import com.odib.bcp.eac.model.vo.BaseUserVo;
 import com.odib.bcp.eac.service.BaseUserService;
+import com.odib.bcp.eac.util.CookieUtils;
 import com.odib.bcp.eac.util.PasswordUtil;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
+import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,10 +42,17 @@ import java.util.List;
 @Service
 public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> implements BaseUserService{
 
+    /**
+     * 最大重复次数
+     */
     private static final Integer RESET_MAX_TIMES = 3;
+    @Value("${odib.bcp.host}")
+    private static String HOST;
 
-    @Resource
+    @Autowired
     BaseUserMapper baseUserMapper;
+    @Autowired
+    RedisServiceImpl redisService;
 
     @Override
     public GenericDao<BaseUser, Integer> getDao() {
@@ -51,7 +65,7 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     }
 
     @Override
-    public ApiResult<BaseUserVo> login(String loginName, String password) {
+    public ApiResult<BaseUserVo> login(String loginName, String password, HttpServletResponse response) {
         ApiResult<BaseUserVo> result;
         BaseUser baseUser = selectByLoginName(loginName);
         if(null == baseUser){
@@ -66,6 +80,9 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
         }else{
             throw new ApiException(ApiResultEnum.LOGIN_100001);
         }
+        String token = DigestUtils.md5Hex(System.currentTimeMillis() + loginName);
+        redisService.setLoginToken(token, baseUser.getIdNo());
+        CookieUtils.addCookie(response, CommonValue.LOGIN_TOKEN_COOKIE_KEY, token, "/",CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
         return result;
     }
 
@@ -79,7 +96,7 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
         String pinyin = baseUserDto.getPinyin();
         Integer num = getLoginNameLevel(pinyin);
         String salt = PasswordUtil.createSalt();
-        String password =PasswordUtil.passwordHash(baseUserDto.getPassword(), salt);
+        String password = PasswordUtil.passwordHash(baseUserDto.getPassword(), salt);
 
         String loginName = pinyin;
         if(num != null){
@@ -142,9 +159,9 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
         Integer num = null;
         BaseUser baseUserExist = baseUserMapper.selectByPinYin(pinyin);
         if(baseUserExist != null){
-            String loginnameExist = baseUserExist.getLoginname();
-            String numStr = loginnameExist.substring(pinyin.length(), loginnameExist.length());
-            if("".equals(numStr)) {
+            String loginNameExist = baseUserExist.getLoginname();
+            String numStr = loginNameExist.substring(pinyin.length(), loginNameExist.length());
+            if(StringUtils.isEmpty(numStr)) {
                 num = 0;
             }else{
                 num = Integer.valueOf(numStr);

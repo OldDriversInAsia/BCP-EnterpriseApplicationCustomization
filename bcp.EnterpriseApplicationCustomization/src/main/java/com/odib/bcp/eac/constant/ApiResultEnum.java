@@ -37,15 +37,15 @@ public enum ApiResultEnum {
     /**
      * 验证码错误
      */
-    LOGIN_100003("100003", "验证码错误"),/**
+    LOGIN_100003("100003", "验证码错误"),
+    /**
      * token校验失败
      */
-    LOGIN_100004("100004", "token校验失败"),/**
+    LOGIN_100004("100004", "token校验失败"),
+    /**
      * 用户已经停用
      */
     LOGIN_100005("100005", "用户已经停用"),
-
-
     ;
     private String code;
     private String message;

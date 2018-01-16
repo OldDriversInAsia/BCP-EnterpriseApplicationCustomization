@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -47,16 +48,19 @@ public class ApiController {
         ApiResult<BaseUser> result = ApiResultEnum.SUCCESS.build(baseUser);
         return result;
     }
+
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public ApiResult<List<BaseUserVo>> selectUserList(){
         return baseUserService.selectUserVoList();
     }
+
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ApiResult<Integer> insertUser(BaseUserDto baseUserDto){
         return baseUserService.insert(baseUserDto);
     }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ApiResult<BaseUserVo> login(String loginName, String password){
-        return baseUserService.login(loginName, password);
+    public ApiResult<BaseUserVo> login(String loginName, String password, HttpServletResponse response){
+        return baseUserService.login(loginName, password, response);
     }
 }

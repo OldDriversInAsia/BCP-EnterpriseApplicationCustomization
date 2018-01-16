@@ -5,7 +5,7 @@
  * Date: 2018/1/10 11:38
  * Description: 统一异常处理
  */
-package com.odib.bcp.eac.config;
+package com.odib.bcp.eac.config.handle;
 
 import com.odib.bcp.eac.constant.ApiResultEnum;
 import com.odib.bcp.eac.exception.ApiException;
@@ -31,12 +31,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     @ResponseBody
     public ApiResult<?> errorHandler(HttpServletRequest req, Exception e) throws Exception{
-        log.error("server error:{}", e);
         ApiResult<?> result;
         if(e instanceof ApiException){
             ApiException apiException = (ApiException) e;
             result = apiException.getApiResultEnum().build();
         }else{
+            log.error("server error:{},url:{},param:{}", e,req.getRequestURL(),req.getQueryString());
             result = ApiResultEnum.FAILED.build();
         }
         return result;
