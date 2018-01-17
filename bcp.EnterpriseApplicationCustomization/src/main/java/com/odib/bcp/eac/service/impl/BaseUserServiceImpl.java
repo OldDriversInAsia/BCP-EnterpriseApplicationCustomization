@@ -47,7 +47,7 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
      */
     private static final Integer RESET_MAX_TIMES = 3;
     @Value("${odib.bcp.host}")
-    private static String HOST;
+    private String HOST;
 
     @Autowired
     BaseUserMapper baseUserMapper;

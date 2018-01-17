@@ -26,7 +26,7 @@ import redis.clients.jedis.JedisPool;
 @Service
 public class RedisServiceImpl implements RedisService{
     @Value("${bcp.redis.prefix}")
-    private static String PREFIX;
+    private String PREFIX;
 
     private static final String LOGIN_TOKEN = "login:token:";
 
