@@ -12,6 +12,7 @@ import com.odib.bcp.eac.exception.ApiException;
 import com.odib.bcp.eac.core.generic.ApiResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +37,7 @@ public class GlobalExceptionHandler {
             ApiException apiException = (ApiException) e;
             result = apiException.getApiResultEnum().build();
         }else{
-            log.error("server error:{},url:{},param:{}", e,req.getRequestURL(),req.getQueryString());
+            log.error("server error:{},url:{},param:{}", e, req.getRequestURL(), req.getQueryString());
             result = ApiResultEnum.FAILED.build();
         }
         return result;
