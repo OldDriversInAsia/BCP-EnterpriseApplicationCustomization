@@ -11,6 +11,7 @@ import com.odib.bcp.eac.constant.CommonValue;
 import com.odib.bcp.eac.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
@@ -29,6 +30,9 @@ public class RedisServiceImpl implements RedisService{
     private String PREFIX;
 
     private static final String LOGIN_TOKEN = "login:token:";
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     private interface Nxxx{
         /**
@@ -54,12 +58,16 @@ public class RedisServiceImpl implements RedisService{
     private JedisPool jedisPool;
     @Override
     public void setLoginToken(String token, Integer idNo) {
-        getJedis().set(LOGIN_TOKEN + token, String.valueOf(idNo), Nxxx.NX, Expx.EX, CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
+        Jedis jedis = getJedis();
+        jedis.set(LOGIN_TOKEN + token, String.valueOf(idNo), Nxxx.NX, Expx.EX, CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
+        jedis.close();
     }
 
     @Override
     public Integer getLoginToken(String token) {
-        String idNoStr = getJedis().get(LOGIN_TOKEN + token);
+        Jedis jedis = getJedis();
+        String idNoStr = jedis.get(LOGIN_TOKEN + token);
+        jedis.close();
         if(StringUtils.isEmpty(idNoStr)){
            return null;
         }
