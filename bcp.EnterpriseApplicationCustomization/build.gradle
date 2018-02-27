@@ -49,6 +49,7 @@ dependencies {
     compile group: 'com.alibaba', name: 'druid', version: '1.1.6'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.8-dmr'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 }
 sourceSets {
     main {

@@ -21,10 +21,10 @@ import com.odib.bcp.eac.service.BaseUserService;
 import com.odib.bcp.eac.util.CookieUtils;
 import com.odib.bcp.eac.util.PasswordUtil;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -100,7 +100,9 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
 
         String loginName = pinyin;
         if(num != null){
-            loginName = loginName + num;
+            String numStr = String.valueOf(num);
+            numStr = StringUtils.leftPad(numStr, 2, '0');
+            loginName = loginName + numStr;
         }
 
         BaseUser baseUser = new BaseUser();
