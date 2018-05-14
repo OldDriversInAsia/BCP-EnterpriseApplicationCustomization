@@ -1,2 +1,2 @@
 include 'bcp.EnterpriseApplicationCustomization'
-
+include 'bcp.im'
