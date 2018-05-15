@@ -6,13 +6,7 @@ package com.odib.bcp.im.mars.sample.chat.proto;
 public final class Topic {
   private Topic() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface TopicRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
@@ -25,7 +19,7 @@ public final class Topic {
     /**
      * <code>required string topic = 1;</code>
      */
-    java.lang.String getTopic();
+    String getTopic();
     /**
      * <code>required string topic = 1;</code>
      */
@@ -35,32 +29,37 @@ public final class Topic {
   /**
    * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.TopicRequest}
    */
-  public  static final class TopicRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class TopicRequest extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
       TopicRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use TopicRequest.newBuilder() to construct.
-    private TopicRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private TopicRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TopicRequest() {
-      topic_ = "";
+    private TopicRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TopicRequest defaultInstance;
+    public static TopicRequest getDefaultInstance() {
+      return defaultInstance;
     }
 
-    @java.lang.Override
+    public TopicRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private TopicRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -73,8 +72,8 @@ public final class Topic {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -91,7 +90,7 @@ public final class Topic {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -99,19 +98,34 @@ public final class Topic {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor;
+      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_fieldAccessorTable
+      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest.class, com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<TopicRequest> PARSER =
+        new com.google.protobuf.AbstractParser<TopicRequest>() {
+      public TopicRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TopicRequest(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<TopicRequest> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int TOPIC_FIELD_NUMBER = 1;
-    private volatile java.lang.Object topic_;
+    private Object topic_;
     /**
      * <code>required string topic = 1;</code>
      */
@@ -121,14 +135,14 @@ public final class Topic {
     /**
      * <code>required string topic = 1;</code>
      */
-    public java.lang.String getTopic() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getTopic() {
+      Object ref = topic_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           topic_ = s;
         }
@@ -140,11 +154,11 @@ public final class Topic {
      */
     public com.google.protobuf.ByteString
         getTopicBytes() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = topic_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         topic_ = b;
         return b;
       } else {
@@ -152,6 +166,9 @@ public final class Topic {
       }
     }
 
+    private void initFields() {
+      topic_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -168,72 +185,35 @@ public final class Topic {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, topic_);
+        output.writeBytes(1, getTopicBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, topic_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getTopicBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest)) {
-        return super.equals(obj);
-      }
-      com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest other = (com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest) obj;
-
-      boolean result = true;
-      result = result && (hasTopic() == other.hasTopic());
-      if (hasTopic()) {
-        result = result && getTopic()
-            .equals(other.getTopic());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasTopic()) {
-        hash = (37 * hash) + TOPIC_FIELD_NUMBER;
-        hash = (53 * hash) + getTopic().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -257,57 +237,46 @@ public final class Topic {
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -315,17 +284,17 @@ public final class Topic {
      * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.TopicRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
         com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_fieldAccessorTable
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest.class, com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest.Builder.class);
       }
@@ -336,15 +305,18 @@ public final class Topic {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         topic_ = "";
@@ -352,9 +324,13 @@ public final class Topic {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor;
       }
 
       public com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest getDefaultInstanceForType() {
@@ -382,32 +358,6 @@ public final class Topic {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest) {
           return mergeFrom((com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest)other);
@@ -424,13 +374,13 @@ public final class Topic {
           topic_ = other.topic_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasTopic()) {
+
           return false;
         }
         return true;
@@ -445,7 +395,7 @@ public final class Topic {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -455,7 +405,7 @@ public final class Topic {
       }
       private int bitField0_;
 
-      private java.lang.Object topic_ = "";
+      private Object topic_ = "";
       /**
        * <code>required string topic = 1;</code>
        */
@@ -465,18 +415,18 @@ public final class Topic {
       /**
        * <code>required string topic = 1;</code>
        */
-      public java.lang.String getTopic() {
-        java.lang.Object ref = topic_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getTopic() {
+        Object ref = topic_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             topic_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -484,11 +434,11 @@ public final class Topic {
        */
       public com.google.protobuf.ByteString
           getTopicBytes() {
-        java.lang.Object ref = topic_;
+        Object ref = topic_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           topic_ = b;
           return b;
         } else {
@@ -499,7 +449,7 @@ public final class Topic {
        * <code>required string topic = 1;</code>
        */
       public Builder setTopic(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -530,53 +480,16 @@ public final class Topic {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
-    private static final com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest();
+      defaultInstance = new TopicRequest(true);
+      defaultInstance.initFields();
     }
 
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<TopicRequest>
-        PARSER = new com.google.protobuf.AbstractParser<TopicRequest>() {
-      public TopicRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TopicRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<TopicRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TopicRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicRequest)
   }
 
   public interface TopicResponseOrBuilder extends
@@ -599,7 +512,7 @@ public final class Topic {
     /**
      * <code>required string err_msg = 2;</code>
      */
-    java.lang.String getErrMsg();
+    String getErrMsg();
     /**
      * <code>required string err_msg = 2;</code>
      */
@@ -609,33 +522,37 @@ public final class Topic {
   /**
    * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.TopicResponse}
    */
-  public  static final class TopicResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class TopicResponse extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:com.odib.bcp.im.mars.sample.chat.proto.TopicResponse)
       TopicResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use TopicResponse.newBuilder() to construct.
-    private TopicResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private TopicResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private TopicResponse() {
-      errCode_ = 0;
-      errMsg_ = "";
+    private TopicResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TopicResponse defaultInstance;
+    public static TopicResponse getDefaultInstance() {
+      return defaultInstance;
     }
 
-    @java.lang.Override
+    public TopicResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private TopicResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -648,8 +565,8 @@ public final class Topic {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -671,7 +588,7 @@ public final class Topic {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -679,14 +596,29 @@ public final class Topic {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor;
+      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_fieldAccessorTable
+      return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse.class, com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<TopicResponse> PARSER =
+        new com.google.protobuf.AbstractParser<TopicResponse>() {
+      public TopicResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TopicResponse(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<TopicResponse> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -697,11 +629,11 @@ public final class Topic {
       /**
        * <code>ERR_OK = 0;</code>
        */
-      ERR_OK(0),
+      ERR_OK(0, 0),
       /**
        * <code>ERR_SYS = -1;</code>
        */
-      ERR_SYS(-1),
+      ERR_SYS(1, -1),
       ;
 
       /**
@@ -714,19 +646,9 @@ public final class Topic {
       public static final int ERR_SYS_VALUE = -1;
 
 
-      public final int getNumber() {
-        return value;
-      }
+      public final int getNumber() { return value; }
 
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
       public static Error valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static Error forNumber(int value) {
         switch (value) {
           case 0: return ERR_OK;
           case -1: return ERR_SYS;
@@ -738,17 +660,17 @@ public final class Topic {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Error> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<Error>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Error>() {
               public Error findValueByNumber(int number) {
-                return Error.forNumber(number);
+                return Error.valueOf(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
+        return getDescriptor().getValues().get(index);
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -764,15 +686,17 @@ public final class Topic {
       public static Error valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
+          throw new IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
       }
 
+      private final int index;
       private final int value;
 
-      private Error(int value) {
+      private Error(int index, int value) {
+        this.index = index;
         this.value = value;
       }
 
@@ -796,7 +720,7 @@ public final class Topic {
     }
 
     public static final int ERR_MSG_FIELD_NUMBER = 2;
-    private volatile java.lang.Object errMsg_;
+    private Object errMsg_;
     /**
      * <code>required string err_msg = 2;</code>
      */
@@ -806,14 +730,14 @@ public final class Topic {
     /**
      * <code>required string err_msg = 2;</code>
      */
-    public java.lang.String getErrMsg() {
-      java.lang.Object ref = errMsg_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getErrMsg() {
+      Object ref = errMsg_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           errMsg_ = s;
         }
@@ -825,11 +749,11 @@ public final class Topic {
      */
     public com.google.protobuf.ByteString
         getErrMsgBytes() {
-      java.lang.Object ref = errMsg_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = errMsg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         errMsg_ = b;
         return b;
       } else {
@@ -837,6 +761,10 @@ public final class Topic {
       }
     }
 
+    private void initFields() {
+      errCode_ = 0;
+      errMsg_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -857,17 +785,19 @@ public final class Topic {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, errCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, errMsg_);
+        output.writeBytes(2, getErrMsgBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -876,69 +806,21 @@ public final class Topic {
           .computeInt32Size(1, errCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, errMsg_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getErrMsgBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse)) {
-        return super.equals(obj);
-      }
-      com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse other = (com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse) obj;
-
-      boolean result = true;
-      result = result && (hasErrCode() == other.hasErrCode());
-      if (hasErrCode()) {
-        result = result && (getErrCode()
-            == other.getErrCode());
-      }
-      result = result && (hasErrMsg() == other.hasErrMsg());
-      if (hasErrMsg()) {
-        result = result && getErrMsg()
-            .equals(other.getErrMsg());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasErrCode()) {
-        hash = (37 * hash) + ERR_CODE_FIELD_NUMBER;
-        hash = (53 * hash) + getErrCode();
-      }
-      if (hasErrMsg()) {
-        hash = (37 * hash) + ERR_MSG_FIELD_NUMBER;
-        hash = (53 * hash) + getErrMsg().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -962,57 +844,46 @@ public final class Topic {
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1020,17 +891,17 @@ public final class Topic {
      * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.TopicResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.odib.bcp.im.mars.sample.chat.proto.TopicResponse)
         com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_fieldAccessorTable
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse.class, com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse.Builder.class);
       }
@@ -1041,15 +912,18 @@ public final class Topic {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         errCode_ = 0;
@@ -1059,9 +933,13 @@ public final class Topic {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Topic.internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor;
       }
 
       public com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse getDefaultInstanceForType() {
@@ -1093,32 +971,6 @@ public final class Topic {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse) {
           return mergeFrom((com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse)other);
@@ -1138,16 +990,17 @@ public final class Topic {
           errMsg_ = other.errMsg_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasErrCode()) {
+
           return false;
         }
         if (!hasErrMsg()) {
+
           return false;
         }
         return true;
@@ -1162,7 +1015,7 @@ public final class Topic {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1204,7 +1057,7 @@ public final class Topic {
         return this;
       }
 
-      private java.lang.Object errMsg_ = "";
+      private Object errMsg_ = "";
       /**
        * <code>required string err_msg = 2;</code>
        */
@@ -1214,18 +1067,18 @@ public final class Topic {
       /**
        * <code>required string err_msg = 2;</code>
        */
-      public java.lang.String getErrMsg() {
-        java.lang.Object ref = errMsg_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getErrMsg() {
+        Object ref = errMsg_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             errMsg_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -1233,11 +1086,11 @@ public final class Topic {
        */
       public com.google.protobuf.ByteString
           getErrMsgBytes() {
-        java.lang.Object ref = errMsg_;
+        Object ref = errMsg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           errMsg_ = b;
           return b;
         } else {
@@ -1248,7 +1101,7 @@ public final class Topic {
        * <code>required string err_msg = 2;</code>
        */
       public Builder setErrMsg(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1279,79 +1132,42 @@ public final class Topic {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicResponse)
-    private static final com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse();
+      defaultInstance = new TopicResponse(true);
+      defaultInstance.initFields();
     }
 
-    public static com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<TopicResponse>
-        PARSER = new com.google.protobuf.AbstractParser<TopicResponse>() {
-      public TopicResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TopicResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<TopicResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TopicResponse> getParserForType() {
-      return PARSER;
-    }
-
-    public com.odib.bcp.im.mars.sample.chat.proto.Topic.TopicResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.TopicResponse)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_fieldAccessorTable;
+    internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_fieldAccessorTable;
+    internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\013topic.proto\022&com.odib.bcp.im.mars.samp" +
-      "le.chat.proto\"\035\n\014TopicRequest\022\r\n\005topic\030\001" +
-      " \002(\t\"]\n\rTopicResponse\022\020\n\010err_code\030\001 \002(\005\022" +
-      "\017\n\007err_msg\030\002 \002(\t\")\n\005Error\022\n\n\006ERR_OK\020\000\022\024\n" +
-      "\007ERR_SYS\020\377\377\377\377\377\377\377\377\377\001"
+    String[] descriptorData = {
+      "\n\013topic.proto\022\"com.odib.bcp.im.mars.sample.c" +
+      "hat.proto\"\035\n\014TopicRequest\022\r\n\005topic\030\001 \002(\t" +
+      "\"]\n\rTopicResponse\022\020\n\010err_code\030\001 \002(\005\022\017\n\007e" +
+      "rr_msg\030\002 \002(\t\")\n\005Error\022\n\n\006ERR_OK\020\000\022\024\n\007ERR" +
+      "_SYS\020\377\377\377\377\377\377\377\377\377\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1365,18 +1181,18 @@ public final class Topic {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor =
+    internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicRequest_descriptor,
-        new java.lang.String[] { "Topic", });
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor =
+    internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_tencent_mars_sample_chat_proto_TopicRequest_descriptor,
+        new String[] { "Topic", });
+    internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_odib_bcp_im_mars_sample_chat_proto_TopicResponse_descriptor,
-        new java.lang.String[] { "ErrCode", "ErrMsg", });
+    internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_tencent_mars_sample_chat_proto_TopicResponse_descriptor,
+        new String[] { "ErrCode", "ErrMsg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

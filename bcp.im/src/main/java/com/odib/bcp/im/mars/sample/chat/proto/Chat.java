@@ -6,13 +6,7 @@ package com.odib.bcp.im.mars.sample.chat.proto;
 public final class Chat {
   private Chat() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface SendMessageRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
@@ -25,7 +19,7 @@ public final class Chat {
     /**
      * <code>required string access_token = 1;</code>
      */
-    java.lang.String getAccessToken();
+    String getAccessToken();
     /**
      * <code>required string access_token = 1;</code>
      */
@@ -39,7 +33,7 @@ public final class Chat {
     /**
      * <code>required string from = 2;</code>
      */
-    java.lang.String getFrom();
+    String getFrom();
     /**
      * <code>required string from = 2;</code>
      */
@@ -53,7 +47,7 @@ public final class Chat {
     /**
      * <code>required string to = 3;</code>
      */
-    java.lang.String getTo();
+    String getTo();
     /**
      * <code>required string to = 3;</code>
      */
@@ -67,7 +61,7 @@ public final class Chat {
     /**
      * <code>required string text = 4;</code>
      */
-    java.lang.String getText();
+    String getText();
     /**
      * <code>required string text = 4;</code>
      */
@@ -81,7 +75,7 @@ public final class Chat {
     /**
      * <code>required string topic = 5;</code>
      */
-    java.lang.String getTopic();
+    String getTopic();
     /**
      * <code>required string topic = 5;</code>
      */
@@ -91,36 +85,37 @@ public final class Chat {
   /**
    * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest}
    */
-  public  static final class SendMessageRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class SendMessageRequest extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
       SendMessageRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use SendMessageRequest.newBuilder() to construct.
-    private SendMessageRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private SendMessageRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SendMessageRequest() {
-      accessToken_ = "";
-      from_ = "";
-      to_ = "";
-      text_ = "";
-      topic_ = "";
+    private SendMessageRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SendMessageRequest defaultInstance;
+    public static SendMessageRequest getDefaultInstance() {
+      return defaultInstance;
     }
 
-    @java.lang.Override
+    public SendMessageRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private SendMessageRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -133,8 +128,8 @@ public final class Chat {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -175,7 +170,7 @@ public final class Chat {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -183,19 +178,34 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor;
+      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable
+      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest.class, com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<SendMessageRequest> PARSER =
+        new com.google.protobuf.AbstractParser<SendMessageRequest>() {
+      public SendMessageRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SendMessageRequest(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<SendMessageRequest> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int ACCESS_TOKEN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object accessToken_;
+    private Object accessToken_;
     /**
      * <code>required string access_token = 1;</code>
      */
@@ -205,14 +215,14 @@ public final class Chat {
     /**
      * <code>required string access_token = 1;</code>
      */
-    public java.lang.String getAccessToken() {
-      java.lang.Object ref = accessToken_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getAccessToken() {
+      Object ref = accessToken_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           accessToken_ = s;
         }
@@ -224,11 +234,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getAccessTokenBytes() {
-      java.lang.Object ref = accessToken_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = accessToken_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         accessToken_ = b;
         return b;
       } else {
@@ -237,7 +247,7 @@ public final class Chat {
     }
 
     public static final int FROM_FIELD_NUMBER = 2;
-    private volatile java.lang.Object from_;
+    private Object from_;
     /**
      * <code>required string from = 2;</code>
      */
@@ -247,14 +257,14 @@ public final class Chat {
     /**
      * <code>required string from = 2;</code>
      */
-    public java.lang.String getFrom() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getFrom() {
+      Object ref = from_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           from_ = s;
         }
@@ -266,11 +276,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getFromBytes() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = from_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         from_ = b;
         return b;
       } else {
@@ -279,7 +289,7 @@ public final class Chat {
     }
 
     public static final int TO_FIELD_NUMBER = 3;
-    private volatile java.lang.Object to_;
+    private Object to_;
     /**
      * <code>required string to = 3;</code>
      */
@@ -289,14 +299,14 @@ public final class Chat {
     /**
      * <code>required string to = 3;</code>
      */
-    public java.lang.String getTo() {
-      java.lang.Object ref = to_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getTo() {
+      Object ref = to_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           to_ = s;
         }
@@ -308,11 +318,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getToBytes() {
-      java.lang.Object ref = to_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = to_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         to_ = b;
         return b;
       } else {
@@ -321,7 +331,7 @@ public final class Chat {
     }
 
     public static final int TEXT_FIELD_NUMBER = 4;
-    private volatile java.lang.Object text_;
+    private Object text_;
     /**
      * <code>required string text = 4;</code>
      */
@@ -331,14 +341,14 @@ public final class Chat {
     /**
      * <code>required string text = 4;</code>
      */
-    public java.lang.String getText() {
-      java.lang.Object ref = text_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getText() {
+      Object ref = text_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           text_ = s;
         }
@@ -350,11 +360,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getTextBytes() {
-      java.lang.Object ref = text_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = text_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         text_ = b;
         return b;
       } else {
@@ -363,7 +373,7 @@ public final class Chat {
     }
 
     public static final int TOPIC_FIELD_NUMBER = 5;
-    private volatile java.lang.Object topic_;
+    private Object topic_;
     /**
      * <code>required string topic = 5;</code>
      */
@@ -373,14 +383,14 @@ public final class Chat {
     /**
      * <code>required string topic = 5;</code>
      */
-    public java.lang.String getTopic() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getTopic() {
+      Object ref = topic_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           topic_ = s;
         }
@@ -392,11 +402,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getTopicBytes() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = topic_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         topic_ = b;
         return b;
       } else {
@@ -404,6 +414,13 @@ public final class Chat {
       }
     }
 
+    private void initFields() {
+      accessToken_ = "";
+      from_ = "";
+      to_ = "";
+      text_ = "";
+      topic_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -436,132 +453,63 @@ public final class Chat {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, accessToken_);
+        output.writeBytes(1, getAccessTokenBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, from_);
+        output.writeBytes(2, getFromBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, to_);
+        output.writeBytes(3, getToBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, text_);
+        output.writeBytes(4, getTextBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, topic_);
+        output.writeBytes(5, getTopicBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, accessToken_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getAccessTokenBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, from_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getFromBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, to_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getToBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, text_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getTextBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, topic_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getTopicBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest)) {
-        return super.equals(obj);
-      }
-      com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest other = (com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest) obj;
-
-      boolean result = true;
-      result = result && (hasAccessToken() == other.hasAccessToken());
-      if (hasAccessToken()) {
-        result = result && getAccessToken()
-            .equals(other.getAccessToken());
-      }
-      result = result && (hasFrom() == other.hasFrom());
-      if (hasFrom()) {
-        result = result && getFrom()
-            .equals(other.getFrom());
-      }
-      result = result && (hasTo() == other.hasTo());
-      if (hasTo()) {
-        result = result && getTo()
-            .equals(other.getTo());
-      }
-      result = result && (hasText() == other.hasText());
-      if (hasText()) {
-        result = result && getText()
-            .equals(other.getText());
-      }
-      result = result && (hasTopic() == other.hasTopic());
-      if (hasTopic()) {
-        result = result && getTopic()
-            .equals(other.getTopic());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasAccessToken()) {
-        hash = (37 * hash) + ACCESS_TOKEN_FIELD_NUMBER;
-        hash = (53 * hash) + getAccessToken().hashCode();
-      }
-      if (hasFrom()) {
-        hash = (37 * hash) + FROM_FIELD_NUMBER;
-        hash = (53 * hash) + getFrom().hashCode();
-      }
-      if (hasTo()) {
-        hash = (37 * hash) + TO_FIELD_NUMBER;
-        hash = (53 * hash) + getTo().hashCode();
-      }
-      if (hasText()) {
-        hash = (37 * hash) + TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getText().hashCode();
-      }
-      if (hasTopic()) {
-        hash = (37 * hash) + TOPIC_FIELD_NUMBER;
-        hash = (53 * hash) + getTopic().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -585,57 +533,46 @@ public final class Chat {
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -643,36 +580,39 @@ public final class Chat {
      * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
         com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest.class, com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest.Builder.class);
       }
 
-      // Construct using Chat.SendMessageRequest.newBuilder()
+      // Construct using com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         accessToken_ = "";
@@ -688,9 +628,13 @@ public final class Chat {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor;
       }
 
       public com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest getDefaultInstanceForType() {
@@ -734,32 +678,6 @@ public final class Chat {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest) {
           return mergeFrom((com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest)other);
@@ -796,25 +714,29 @@ public final class Chat {
           topic_ = other.topic_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasAccessToken()) {
+
           return false;
         }
         if (!hasFrom()) {
+
           return false;
         }
         if (!hasTo()) {
+
           return false;
         }
         if (!hasText()) {
+
           return false;
         }
         if (!hasTopic()) {
+
           return false;
         }
         return true;
@@ -829,7 +751,7 @@ public final class Chat {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -839,7 +761,7 @@ public final class Chat {
       }
       private int bitField0_;
 
-      private java.lang.Object accessToken_ = "";
+      private Object accessToken_ = "";
       /**
        * <code>required string access_token = 1;</code>
        */
@@ -849,18 +771,18 @@ public final class Chat {
       /**
        * <code>required string access_token = 1;</code>
        */
-      public java.lang.String getAccessToken() {
-        java.lang.Object ref = accessToken_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getAccessToken() {
+        Object ref = accessToken_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             accessToken_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -868,11 +790,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getAccessTokenBytes() {
-        java.lang.Object ref = accessToken_;
+        Object ref = accessToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           accessToken_ = b;
           return b;
         } else {
@@ -883,7 +805,7 @@ public final class Chat {
        * <code>required string access_token = 1;</code>
        */
       public Builder setAccessToken(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -915,7 +837,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object from_ = "";
+      private Object from_ = "";
       /**
        * <code>required string from = 2;</code>
        */
@@ -925,18 +847,18 @@ public final class Chat {
       /**
        * <code>required string from = 2;</code>
        */
-      public java.lang.String getFrom() {
-        java.lang.Object ref = from_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getFrom() {
+        Object ref = from_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             from_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -944,11 +866,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getFromBytes() {
-        java.lang.Object ref = from_;
+        Object ref = from_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           from_ = b;
           return b;
         } else {
@@ -959,7 +881,7 @@ public final class Chat {
        * <code>required string from = 2;</code>
        */
       public Builder setFrom(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -991,7 +913,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object to_ = "";
+      private Object to_ = "";
       /**
        * <code>required string to = 3;</code>
        */
@@ -1001,18 +923,18 @@ public final class Chat {
       /**
        * <code>required string to = 3;</code>
        */
-      public java.lang.String getTo() {
-        java.lang.Object ref = to_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getTo() {
+        Object ref = to_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             to_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -1020,11 +942,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getToBytes() {
-        java.lang.Object ref = to_;
+        Object ref = to_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           to_ = b;
           return b;
         } else {
@@ -1035,7 +957,7 @@ public final class Chat {
        * <code>required string to = 3;</code>
        */
       public Builder setTo(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1067,7 +989,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object text_ = "";
+      private Object text_ = "";
       /**
        * <code>required string text = 4;</code>
        */
@@ -1077,18 +999,18 @@ public final class Chat {
       /**
        * <code>required string text = 4;</code>
        */
-      public java.lang.String getText() {
-        java.lang.Object ref = text_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getText() {
+        Object ref = text_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             text_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -1096,11 +1018,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getTextBytes() {
-        java.lang.Object ref = text_;
+        Object ref = text_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           text_ = b;
           return b;
         } else {
@@ -1111,7 +1033,7 @@ public final class Chat {
        * <code>required string text = 4;</code>
        */
       public Builder setText(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1143,7 +1065,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object topic_ = "";
+      private Object topic_ = "";
       /**
        * <code>required string topic = 5;</code>
        */
@@ -1153,18 +1075,18 @@ public final class Chat {
       /**
        * <code>required string topic = 5;</code>
        */
-      public java.lang.String getTopic() {
-        java.lang.Object ref = topic_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getTopic() {
+        Object ref = topic_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             topic_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -1172,11 +1094,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getTopicBytes() {
-        java.lang.Object ref = topic_;
+        Object ref = topic_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           topic_ = b;
           return b;
         } else {
@@ -1187,7 +1109,7 @@ public final class Chat {
        * <code>required string topic = 5;</code>
        */
       public Builder setTopic(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1218,53 +1140,16 @@ public final class Chat {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
-    private static final com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest();
+      defaultInstance = new SendMessageRequest(true);
+      defaultInstance.initFields();
     }
 
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<SendMessageRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SendMessageRequest>() {
-      public SendMessageRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SendMessageRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<SendMessageRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SendMessageRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageRequest)
   }
 
   public interface SendMessageResponseOrBuilder extends
@@ -1287,7 +1172,7 @@ public final class Chat {
     /**
      * <code>required string err_msg = 2;</code>
      */
-    java.lang.String getErrMsg();
+    String getErrMsg();
     /**
      * <code>required string err_msg = 2;</code>
      */
@@ -1301,7 +1186,7 @@ public final class Chat {
     /**
      * <code>required string from = 3;</code>
      */
-    java.lang.String getFrom();
+    String getFrom();
     /**
      * <code>required string from = 3;</code>
      */
@@ -1315,7 +1200,7 @@ public final class Chat {
     /**
      * <code>required string text = 4;</code>
      */
-    java.lang.String getText();
+    String getText();
     /**
      * <code>required string text = 4;</code>
      */
@@ -1329,7 +1214,7 @@ public final class Chat {
     /**
      * <code>required string topic = 5;</code>
      */
-    java.lang.String getTopic();
+    String getTopic();
     /**
      * <code>required string topic = 5;</code>
      */
@@ -1339,36 +1224,37 @@ public final class Chat {
   /**
    * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse}
    */
-  public  static final class SendMessageResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class SendMessageResponse extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse)
       SendMessageResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use SendMessageResponse.newBuilder() to construct.
-    private SendMessageResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private SendMessageResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SendMessageResponse() {
-      errCode_ = 0;
-      errMsg_ = "";
-      from_ = "";
-      text_ = "";
-      topic_ = "";
+    private SendMessageResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SendMessageResponse defaultInstance;
+    public static SendMessageResponse getDefaultInstance() {
+      return defaultInstance;
     }
 
-    @java.lang.Override
+    public SendMessageResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private SendMessageResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1381,8 +1267,8 @@ public final class Chat {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1422,7 +1308,7 @@ public final class Chat {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1430,14 +1316,29 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor;
+      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable
+      return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse.class, com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SendMessageResponse> PARSER =
+        new com.google.protobuf.AbstractParser<SendMessageResponse>() {
+      public SendMessageResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SendMessageResponse(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<SendMessageResponse> getParserForType() {
+      return PARSER;
     }
 
     /**
@@ -1448,11 +1349,11 @@ public final class Chat {
       /**
        * <code>ERR_OK = 0;</code>
        */
-      ERR_OK(0),
+      ERR_OK(0, 0),
       /**
        * <code>ERR_SYS = -1;</code>
        */
-      ERR_SYS(-1),
+      ERR_SYS(1, -1),
       ;
 
       /**
@@ -1465,19 +1366,9 @@ public final class Chat {
       public static final int ERR_SYS_VALUE = -1;
 
 
-      public final int getNumber() {
-        return value;
-      }
+      public final int getNumber() { return value; }
 
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
       public static Error valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static Error forNumber(int value) {
         switch (value) {
           case 0: return ERR_OK;
           case -1: return ERR_SYS;
@@ -1489,17 +1380,17 @@ public final class Chat {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Error> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<Error>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Error>() {
               public Error findValueByNumber(int number) {
-                return Error.forNumber(number);
+                return Error.valueOf(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
+        return getDescriptor().getValues().get(index);
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -1515,15 +1406,17 @@ public final class Chat {
       public static Error valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
+          throw new IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
       }
 
+      private final int index;
       private final int value;
 
-      private Error(int value) {
+      private Error(int index, int value) {
+        this.index = index;
         this.value = value;
       }
 
@@ -1547,7 +1440,7 @@ public final class Chat {
     }
 
     public static final int ERR_MSG_FIELD_NUMBER = 2;
-    private volatile java.lang.Object errMsg_;
+    private Object errMsg_;
     /**
      * <code>required string err_msg = 2;</code>
      */
@@ -1557,14 +1450,14 @@ public final class Chat {
     /**
      * <code>required string err_msg = 2;</code>
      */
-    public java.lang.String getErrMsg() {
-      java.lang.Object ref = errMsg_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getErrMsg() {
+      Object ref = errMsg_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           errMsg_ = s;
         }
@@ -1576,11 +1469,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getErrMsgBytes() {
-      java.lang.Object ref = errMsg_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = errMsg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         errMsg_ = b;
         return b;
       } else {
@@ -1589,7 +1482,7 @@ public final class Chat {
     }
 
     public static final int FROM_FIELD_NUMBER = 3;
-    private volatile java.lang.Object from_;
+    private Object from_;
     /**
      * <code>required string from = 3;</code>
      */
@@ -1599,14 +1492,14 @@ public final class Chat {
     /**
      * <code>required string from = 3;</code>
      */
-    public java.lang.String getFrom() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getFrom() {
+      Object ref = from_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           from_ = s;
         }
@@ -1618,11 +1511,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getFromBytes() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = from_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         from_ = b;
         return b;
       } else {
@@ -1631,7 +1524,7 @@ public final class Chat {
     }
 
     public static final int TEXT_FIELD_NUMBER = 4;
-    private volatile java.lang.Object text_;
+    private Object text_;
     /**
      * <code>required string text = 4;</code>
      */
@@ -1641,14 +1534,14 @@ public final class Chat {
     /**
      * <code>required string text = 4;</code>
      */
-    public java.lang.String getText() {
-      java.lang.Object ref = text_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getText() {
+      Object ref = text_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           text_ = s;
         }
@@ -1660,11 +1553,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getTextBytes() {
-      java.lang.Object ref = text_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = text_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         text_ = b;
         return b;
       } else {
@@ -1673,7 +1566,7 @@ public final class Chat {
     }
 
     public static final int TOPIC_FIELD_NUMBER = 5;
-    private volatile java.lang.Object topic_;
+    private Object topic_;
     /**
      * <code>required string topic = 5;</code>
      */
@@ -1683,14 +1576,14 @@ public final class Chat {
     /**
      * <code>required string topic = 5;</code>
      */
-    public java.lang.String getTopic() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getTopic() {
+      Object ref = topic_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           topic_ = s;
         }
@@ -1702,11 +1595,11 @@ public final class Chat {
      */
     public com.google.protobuf.ByteString
         getTopicBytes() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = topic_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         topic_ = b;
         return b;
       } else {
@@ -1714,6 +1607,13 @@ public final class Chat {
       }
     }
 
+    private void initFields() {
+      errCode_ = 0;
+      errMsg_ = "";
+      from_ = "";
+      text_ = "";
+      topic_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1746,26 +1646,28 @@ public final class Chat {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, errCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, errMsg_);
+        output.writeBytes(2, getErrMsgBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, from_);
+        output.writeBytes(3, getFromBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, text_);
+        output.writeBytes(4, getTextBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, topic_);
+        output.writeBytes(5, getTopicBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -1774,105 +1676,33 @@ public final class Chat {
           .computeInt32Size(1, errCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, errMsg_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getErrMsgBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, from_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getFromBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, text_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getTextBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, topic_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getTopicBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse)) {
-        return super.equals(obj);
-      }
-      com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse other = (com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse) obj;
-
-      boolean result = true;
-      result = result && (hasErrCode() == other.hasErrCode());
-      if (hasErrCode()) {
-        result = result && (getErrCode()
-            == other.getErrCode());
-      }
-      result = result && (hasErrMsg() == other.hasErrMsg());
-      if (hasErrMsg()) {
-        result = result && getErrMsg()
-            .equals(other.getErrMsg());
-      }
-      result = result && (hasFrom() == other.hasFrom());
-      if (hasFrom()) {
-        result = result && getFrom()
-            .equals(other.getFrom());
-      }
-      result = result && (hasText() == other.hasText());
-      if (hasText()) {
-        result = result && getText()
-            .equals(other.getText());
-      }
-      result = result && (hasTopic() == other.hasTopic());
-      if (hasTopic()) {
-        result = result && getTopic()
-            .equals(other.getTopic());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasErrCode()) {
-        hash = (37 * hash) + ERR_CODE_FIELD_NUMBER;
-        hash = (53 * hash) + getErrCode();
-      }
-      if (hasErrMsg()) {
-        hash = (37 * hash) + ERR_MSG_FIELD_NUMBER;
-        hash = (53 * hash) + getErrMsg().hashCode();
-      }
-      if (hasFrom()) {
-        hash = (37 * hash) + FROM_FIELD_NUMBER;
-        hash = (53 * hash) + getFrom().hashCode();
-      }
-      if (hasText()) {
-        hash = (37 * hash) + TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getText().hashCode();
-      }
-      if (hasTopic()) {
-        hash = (37 * hash) + TOPIC_FIELD_NUMBER;
-        hash = (53 * hash) + getTopic().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1896,57 +1726,46 @@ public final class Chat {
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1954,36 +1773,39 @@ public final class Chat {
      * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse)
         com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse.class, com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse.Builder.class);
       }
 
-      // Construct using Chat.SendMessageResponse.newBuilder()
+      // Construct using com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         errCode_ = 0;
@@ -1999,9 +1821,13 @@ public final class Chat {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Chat.internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor;
       }
 
       public com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse getDefaultInstanceForType() {
@@ -2045,32 +1871,6 @@ public final class Chat {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse) {
           return mergeFrom((com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse)other);
@@ -2105,25 +1905,29 @@ public final class Chat {
           topic_ = other.topic_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasErrCode()) {
+
           return false;
         }
         if (!hasErrMsg()) {
+
           return false;
         }
         if (!hasFrom()) {
+
           return false;
         }
         if (!hasText()) {
+
           return false;
         }
         if (!hasTopic()) {
+
           return false;
         }
         return true;
@@ -2138,7 +1942,7 @@ public final class Chat {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2180,7 +1984,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object errMsg_ = "";
+      private Object errMsg_ = "";
       /**
        * <code>required string err_msg = 2;</code>
        */
@@ -2190,18 +1994,18 @@ public final class Chat {
       /**
        * <code>required string err_msg = 2;</code>
        */
-      public java.lang.String getErrMsg() {
-        java.lang.Object ref = errMsg_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getErrMsg() {
+        Object ref = errMsg_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             errMsg_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2209,11 +2013,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getErrMsgBytes() {
-        java.lang.Object ref = errMsg_;
+        Object ref = errMsg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           errMsg_ = b;
           return b;
         } else {
@@ -2224,7 +2028,7 @@ public final class Chat {
        * <code>required string err_msg = 2;</code>
        */
       public Builder setErrMsg(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2256,7 +2060,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object from_ = "";
+      private Object from_ = "";
       /**
        * <code>required string from = 3;</code>
        */
@@ -2266,18 +2070,18 @@ public final class Chat {
       /**
        * <code>required string from = 3;</code>
        */
-      public java.lang.String getFrom() {
-        java.lang.Object ref = from_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getFrom() {
+        Object ref = from_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             from_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2285,11 +2089,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getFromBytes() {
-        java.lang.Object ref = from_;
+        Object ref = from_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           from_ = b;
           return b;
         } else {
@@ -2300,7 +2104,7 @@ public final class Chat {
        * <code>required string from = 3;</code>
        */
       public Builder setFrom(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2332,7 +2136,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object text_ = "";
+      private Object text_ = "";
       /**
        * <code>required string text = 4;</code>
        */
@@ -2342,18 +2146,18 @@ public final class Chat {
       /**
        * <code>required string text = 4;</code>
        */
-      public java.lang.String getText() {
-        java.lang.Object ref = text_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getText() {
+        Object ref = text_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             text_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2361,11 +2165,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getTextBytes() {
-        java.lang.Object ref = text_;
+        Object ref = text_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           text_ = b;
           return b;
         } else {
@@ -2376,7 +2180,7 @@ public final class Chat {
        * <code>required string text = 4;</code>
        */
       public Builder setText(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2408,7 +2212,7 @@ public final class Chat {
         return this;
       }
 
-      private java.lang.Object topic_ = "";
+      private Object topic_ = "";
       /**
        * <code>required string topic = 5;</code>
        */
@@ -2418,18 +2222,18 @@ public final class Chat {
       /**
        * <code>required string topic = 5;</code>
        */
-      public java.lang.String getTopic() {
-        java.lang.Object ref = topic_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getTopic() {
+        Object ref = topic_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             topic_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2437,11 +2241,11 @@ public final class Chat {
        */
       public com.google.protobuf.ByteString
           getTopicBytes() {
-        java.lang.Object ref = topic_;
+        Object ref = topic_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           topic_ = b;
           return b;
         } else {
@@ -2452,7 +2256,7 @@ public final class Chat {
        * <code>required string topic = 5;</code>
        */
       public Builder setTopic(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2483,82 +2287,45 @@ public final class Chat {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse)
-    private static final com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse();
+      defaultInstance = new SendMessageResponse(true);
+      defaultInstance.initFields();
     }
 
-    public static com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<SendMessageResponse>
-        PARSER = new com.google.protobuf.AbstractParser<SendMessageResponse>() {
-      public SendMessageResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SendMessageResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<SendMessageResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SendMessageResponse> getParserForType() {
-      return PARSER;
-    }
-
-    public com.odib.bcp.im.mars.sample.chat.proto.Chat.SendMessageResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.SendMessageResponse)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable;
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable;
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\nchat.proto\022&com.odib.bcp.im.mars.sampl" +
-      "e.chat.proto\"a\n\022SendMessageRequest\022\024\n\014ac" +
-      "cess_token\030\001 \002(\t\022\014\n\004from\030\002 \002(\t\022\n\n\002to\030\003 \002" +
-      "(\t\022\014\n\004text\030\004 \002(\t\022\r\n\005topic\030\005 \002(\t\"\216\001\n\023Send" +
-      "MessageResponse\022\020\n\010err_code\030\001 \002(\005\022\017\n\007err" +
-      "_msg\030\002 \002(\t\022\014\n\004from\030\003 \002(\t\022\014\n\004text\030\004 \002(\t\022\r" +
-      "\n\005topic\030\005 \002(\t\")\n\005Error\022\n\n\006ERR_OK\020\000\022\024\n\007ER" +
-      "R_SYS\020\377\377\377\377\377\377\377\377\377\001"
+    String[] descriptorData = {
+      "\n\nchat.proto\022\"com.odib.bcp.im.mars.sample.ch" +
+      "at.proto\"a\n\022SendMessageRequest\022\024\n\014access" +
+      "_token\030\001 \002(\t\022\014\n\004from\030\002 \002(\t\022\n\n\002to\030\003 \002(\t\022\014" +
+      "\n\004text\030\004 \002(\t\022\r\n\005topic\030\005 \002(\t\"\216\001\n\023SendMess" +
+      "ageResponse\022\020\n\010err_code\030\001 \002(\005\022\017\n\007err_msg" +
+      "\030\002 \002(\t\022\014\n\004from\030\003 \002(\t\022\014\n\004text\030\004 \002(\t\022\r\n\005to" +
+      "pic\030\005 \002(\t\")\n\005Error\022\n\n\006ERR_OK\020\000\022\024\n\007ERR_SY" +
+      "S\020\377\377\377\377\377\377\377\377\377\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2572,18 +2339,18 @@ public final class Chat {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor =
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageRequest_descriptor,
-        new java.lang.String[] { "AccessToken", "From", "To", "Text", "Topic", });
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor =
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_tencent_mars_sample_chat_proto_SendMessageRequest_descriptor,
+        new String[] { "AccessToken", "From", "To", "Text", "Topic", });
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_odib_bcp_im_mars_sample_chat_proto_SendMessageResponse_descriptor,
-        new java.lang.String[] { "ErrCode", "ErrMsg", "From", "Text", "Topic", });
+    internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_tencent_mars_sample_chat_proto_SendMessageResponse_descriptor,
+        new String[] { "ErrCode", "ErrMsg", "From", "Text", "Topic", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

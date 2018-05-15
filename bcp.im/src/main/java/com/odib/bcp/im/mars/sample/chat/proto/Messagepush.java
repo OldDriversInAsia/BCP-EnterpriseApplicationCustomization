@@ -6,13 +6,7 @@ package com.odib.bcp.im.mars.sample.chat.proto;
 public final class Messagepush {
   private Messagepush() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface MessagePushOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
@@ -25,7 +19,7 @@ public final class Messagepush {
     /**
      * <code>required string topic = 1;</code>
      */
-    java.lang.String getTopic();
+    String getTopic();
     /**
      * <code>required string topic = 1;</code>
      */
@@ -39,7 +33,7 @@ public final class Messagepush {
     /**
      * <code>required string content = 2;</code>
      */
-    java.lang.String getContent();
+    String getContent();
     /**
      * <code>required string content = 2;</code>
      */
@@ -53,7 +47,7 @@ public final class Messagepush {
     /**
      * <code>required string from = 3;</code>
      */
-    java.lang.String getFrom();
+    String getFrom();
     /**
      * <code>required string from = 3;</code>
      */
@@ -63,34 +57,37 @@ public final class Messagepush {
   /**
    * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.MessagePush}
    */
-  public  static final class MessagePush extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class MessagePush extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
       MessagePushOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use MessagePush.newBuilder() to construct.
-    private MessagePush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private MessagePush(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private MessagePush() {
-      topic_ = "";
-      content_ = "";
-      from_ = "";
+    private MessagePush(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MessagePush defaultInstance;
+    public static MessagePush getDefaultInstance() {
+      return defaultInstance;
     }
 
-    @java.lang.Override
+    public MessagePush getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private MessagePush(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -103,8 +100,8 @@ public final class Messagepush {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -133,7 +130,7 @@ public final class Messagepush {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -141,19 +138,34 @@ public final class Messagepush {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor;
+      return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_fieldAccessorTable
+      return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_tencent_mars_sample_chat_proto_MessagePush_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush.class, com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<MessagePush> PARSER =
+        new com.google.protobuf.AbstractParser<MessagePush>() {
+      public MessagePush parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MessagePush(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<MessagePush> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int TOPIC_FIELD_NUMBER = 1;
-    private volatile java.lang.Object topic_;
+    private Object topic_;
     /**
      * <code>required string topic = 1;</code>
      */
@@ -163,14 +175,14 @@ public final class Messagepush {
     /**
      * <code>required string topic = 1;</code>
      */
-    public java.lang.String getTopic() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getTopic() {
+      Object ref = topic_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           topic_ = s;
         }
@@ -182,11 +194,11 @@ public final class Messagepush {
      */
     public com.google.protobuf.ByteString
         getTopicBytes() {
-      java.lang.Object ref = topic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = topic_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         topic_ = b;
         return b;
       } else {
@@ -195,7 +207,7 @@ public final class Messagepush {
     }
 
     public static final int CONTENT_FIELD_NUMBER = 2;
-    private volatile java.lang.Object content_;
+    private Object content_;
     /**
      * <code>required string content = 2;</code>
      */
@@ -205,14 +217,14 @@ public final class Messagepush {
     /**
      * <code>required string content = 2;</code>
      */
-    public java.lang.String getContent() {
-      java.lang.Object ref = content_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getContent() {
+      Object ref = content_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           content_ = s;
         }
@@ -224,11 +236,11 @@ public final class Messagepush {
      */
     public com.google.protobuf.ByteString
         getContentBytes() {
-      java.lang.Object ref = content_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = content_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         content_ = b;
         return b;
       } else {
@@ -237,7 +249,7 @@ public final class Messagepush {
     }
 
     public static final int FROM_FIELD_NUMBER = 3;
-    private volatile java.lang.Object from_;
+    private Object from_;
     /**
      * <code>required string from = 3;</code>
      */
@@ -247,14 +259,14 @@ public final class Messagepush {
     /**
      * <code>required string from = 3;</code>
      */
-    public java.lang.String getFrom() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getFrom() {
+      Object ref = from_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           from_ = s;
         }
@@ -266,11 +278,11 @@ public final class Messagepush {
      */
     public com.google.protobuf.ByteString
         getFromBytes() {
-      java.lang.Object ref = from_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+      Object ref = from_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         from_ = b;
         return b;
       } else {
@@ -278,6 +290,11 @@ public final class Messagepush {
       }
     }
 
+    private void initFields() {
+      topic_ = "";
+      content_ = "";
+      from_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -302,102 +319,49 @@ public final class Messagepush {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, topic_);
+        output.writeBytes(1, getTopicBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
+        output.writeBytes(2, getContentBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, from_);
+        output.writeBytes(3, getFromBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, topic_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getTopicBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getContentBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, from_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getFromBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush)) {
-        return super.equals(obj);
-      }
-      com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush other = (com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush) obj;
-
-      boolean result = true;
-      result = result && (hasTopic() == other.hasTopic());
-      if (hasTopic()) {
-        result = result && getTopic()
-            .equals(other.getTopic());
-      }
-      result = result && (hasContent() == other.hasContent());
-      if (hasContent()) {
-        result = result && getContent()
-            .equals(other.getContent());
-      }
-      result = result && (hasFrom() == other.hasFrom());
-      if (hasFrom()) {
-        result = result && getFrom()
-            .equals(other.getFrom());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasTopic()) {
-        hash = (37 * hash) + TOPIC_FIELD_NUMBER;
-        hash = (53 * hash) + getTopic().hashCode();
-      }
-      if (hasContent()) {
-        hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-        hash = (53 * hash) + getContent().hashCode();
-      }
-      if (hasFrom()) {
-        hash = (37 * hash) + FROM_FIELD_NUMBER;
-        hash = (53 * hash) + getFrom().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -421,57 +385,46 @@ public final class Messagepush {
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -479,17 +432,17 @@ public final class Messagepush {
      * Protobuf type {@code com.odib.bcp.im.mars.sample.chat.proto.MessagePush}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
         com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePushOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_fieldAccessorTable
+        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_tencent_mars_sample_chat_proto_MessagePush_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush.class, com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush.Builder.class);
       }
@@ -500,15 +453,18 @@ public final class Messagepush {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         topic_ = "";
@@ -520,9 +476,13 @@ public final class Messagepush {
         return this;
       }
 
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor;
+        return com.odib.bcp.im.mars.sample.chat.proto.Messagepush.internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor;
       }
 
       public com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush getDefaultInstanceForType() {
@@ -558,32 +518,6 @@ public final class Messagepush {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush) {
           return mergeFrom((com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush)other);
@@ -610,19 +544,21 @@ public final class Messagepush {
           from_ = other.from_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasTopic()) {
+
           return false;
         }
         if (!hasContent()) {
+
           return false;
         }
         if (!hasFrom()) {
+
           return false;
         }
         return true;
@@ -637,7 +573,7 @@ public final class Messagepush {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -647,7 +583,7 @@ public final class Messagepush {
       }
       private int bitField0_;
 
-      private java.lang.Object topic_ = "";
+      private Object topic_ = "";
       /**
        * <code>required string topic = 1;</code>
        */
@@ -657,18 +593,18 @@ public final class Messagepush {
       /**
        * <code>required string topic = 1;</code>
        */
-      public java.lang.String getTopic() {
-        java.lang.Object ref = topic_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getTopic() {
+        Object ref = topic_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             topic_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -676,11 +612,11 @@ public final class Messagepush {
        */
       public com.google.protobuf.ByteString
           getTopicBytes() {
-        java.lang.Object ref = topic_;
+        Object ref = topic_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           topic_ = b;
           return b;
         } else {
@@ -691,7 +627,7 @@ public final class Messagepush {
        * <code>required string topic = 1;</code>
        */
       public Builder setTopic(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -723,7 +659,7 @@ public final class Messagepush {
         return this;
       }
 
-      private java.lang.Object content_ = "";
+      private Object content_ = "";
       /**
        * <code>required string content = 2;</code>
        */
@@ -733,18 +669,18 @@ public final class Messagepush {
       /**
        * <code>required string content = 2;</code>
        */
-      public java.lang.String getContent() {
-        java.lang.Object ref = content_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getContent() {
+        Object ref = content_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             content_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -752,11 +688,11 @@ public final class Messagepush {
        */
       public com.google.protobuf.ByteString
           getContentBytes() {
-        java.lang.Object ref = content_;
+        Object ref = content_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           content_ = b;
           return b;
         } else {
@@ -767,7 +703,7 @@ public final class Messagepush {
        * <code>required string content = 2;</code>
        */
       public Builder setContent(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -799,7 +735,7 @@ public final class Messagepush {
         return this;
       }
 
-      private java.lang.Object from_ = "";
+      private Object from_ = "";
       /**
        * <code>required string from = 3;</code>
        */
@@ -809,18 +745,18 @@ public final class Messagepush {
       /**
        * <code>required string from = 3;</code>
        */
-      public java.lang.String getFrom() {
-        java.lang.Object ref = from_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getFrom() {
+        Object ref = from_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             from_ = s;
           }
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -828,11 +764,11 @@ public final class Messagepush {
        */
       public com.google.protobuf.ByteString
           getFromBytes() {
-        java.lang.Object ref = from_;
+        Object ref = from_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           from_ = b;
           return b;
         } else {
@@ -843,7 +779,7 @@ public final class Messagepush {
        * <code>required string from = 3;</code>
        */
       public Builder setFrom(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -874,72 +810,35 @@ public final class Messagepush {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
     }
 
-    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
-    private static final com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush();
+      defaultInstance = new MessagePush(true);
+      defaultInstance.initFields();
     }
 
-    public static com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<MessagePush>
-        PARSER = new com.google.protobuf.AbstractParser<MessagePush>() {
-      public MessagePush parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new MessagePush(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<MessagePush> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<MessagePush> getParserForType() {
-      return PARSER;
-    }
-
-    public com.odib.bcp.im.mars.sample.chat.proto.Messagepush.MessagePush getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:com.odib.bcp.im.mars.sample.chat.proto.MessagePush)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_fieldAccessorTable;
+    internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_tencent_mars_sample_chat_proto_MessagePush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\021messagepush.proto\022&com.odib.bcp.im.mar" +
-      "s.sample.chat.proto\";\n\013MessagePush\022\r\n\005to" +
-      "pic\030\001 \002(\t\022\017\n\007content\030\002 \002(\t\022\014\n\004from\030\003 \002(\t"
+    String[] descriptorData = {
+      "\n\021messagepush.proto\022\"com.tencent.mars.sa" +
+      "mple.chat.proto\";\n\013MessagePush\022\r\n\005topic\030" +
+      "\001 \002(\t\022\017\n\007content\030\002 \002(\t\022\014\n\004from\030\003 \002(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -953,12 +852,12 @@ public final class Messagepush {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor =
+    internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_odib_bcp_im_mars_sample_chat_proto_MessagePush_descriptor,
-        new java.lang.String[] { "Topic", "Content", "From", });
+    internal_static_com_tencent_mars_sample_chat_proto_MessagePush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_tencent_mars_sample_chat_proto_MessagePush_descriptor,
+        new String[] { "Topic", "Content", "From", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
