@@ -43,9 +43,12 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    testCompile 'org.glassfish.jersey.core:jersey-client:2.27'
+    testCompile 'org.glassfish.jersey.core:jersey-client:2.26'
     testCompile 'commons-codec:commons-codec:1.9'
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.27'
+    //compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.26'
+    //compile 'org.glassfish.jersey.core:jersey-common:2.26'
+    //compile 'org.glassfish.jersey.inject:jersey-hk2:2.26'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.14'
     compile 'com.google.protobuf:protobuf-java:3.5.1'
     compile 'commons-codec:commons-codec:1.9'
     compile 'org.apache.commons:commons-lang3:3.1'
