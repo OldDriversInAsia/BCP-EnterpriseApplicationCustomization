@@ -46,9 +46,10 @@ import java.util.Random;
 public class MarsController {
     Logger logger = Logger.getLogger(MarsController.class.getName());
     private String[][] conDetails = new String[][]{
-            new String[] {"Mars", "0", "STN Discuss"},
-            new String[] {"Mars", "1", "Xlog Discuss"},
-            new String[] {"Mars", "2", "SDT Discuss"}
+            new String[] {"Mars", "0", "STN 聊天室"},
+            new String[] {"Mars", "1", "Xlog 聊天室"},
+            new String[] {"Mars", "2", "SDT 聊天室"},
+            new String[] {"Mars", "3", "老司机 聊天室"}
     };
     @RequestMapping(value = "/hello", consumes = "application/octet-stream", produces = "application/octet-stream")
     public Response hello(InputStream is) {
