@@ -51,7 +51,7 @@ public class MarsController {
             new String[] {"Mars", "2", "SDT Discuss"}
     };
     @RequestMapping(value = "/hello", consumes = "application/octet-stream", produces = "application/octet-stream")
-    public Response hello(InputStream is) {
+    public ResponseEntity<StreamingResponseBody> hello(InputStream is) {
         try {
             System.out.println("hello");
             final Main.HelloRequest request = Main.HelloRequest.parseFrom(is);
@@ -62,12 +62,8 @@ public class MarsController {
             String errMsg = "congratulations, " + request.getUser();
             final Main.HelloResponse response = Main.HelloResponse.newBuilder().setRetcode(retCode).setErrmsg(errMsg).build();
 
-            final StreamingOutput stream = new StreamingOutput() {
-                public void write(OutputStream os) throws IOException {
-                    response.writeTo(os);
-                }
-            };
-            return Response.ok(stream).build();
+            final StreamingResponseBody stream = response::writeTo;
+            return ResponseEntity.ok(stream);
 
         } catch (Exception e) {
             logger.info(LogUtils.format("%s", e));
@@ -85,7 +81,7 @@ public class MarsController {
 
             List<Main.Conversation> conversationList = null;
             if (request.getType() == Main.ConversationListRequest.FilterType.DEFAULT_VALUE) {
-                conversationList = new LinkedList<Main.Conversation>();
+                conversationList = new LinkedList<>();
 
                 for (String[] conv : conDetails) {
                     conversationList.add(Main.Conversation.newBuilder()
@@ -98,13 +94,7 @@ public class MarsController {
 
             final Main.ConversationListResponse response = Main.ConversationListResponse.newBuilder()
                     .addAllList(conversationList).build();
-            final StreamingResponseBody stream = new StreamingResponseBody() {
-                @Override
-                public void writeTo(OutputStream outputStream) throws IOException {
-                    response.writeTo(outputStream);
-
-                }
-            };
+            final StreamingResponseBody stream = response::writeTo;
 
             return ResponseEntity.ok(stream);
         } catch (Exception e) {
@@ -115,7 +105,7 @@ public class MarsController {
     }
 
     @RequestMapping(value = "/hello2", consumes = "*/*", produces = "application/octet-stream")
-    public Response hello2(InputStream is) {
+    public ResponseEntity<StreamingResponseBody> hello2(InputStream is) {
         try {
             System.out.println("hello2");
 
@@ -144,12 +134,9 @@ public class MarsController {
             }
             final Main.HelloResponse resp = response;
 
-            final StreamingOutput stream = new StreamingOutput() {
-                public void write(OutputStream os) throws IOException {
-                    resp.writeTo(os);
-                }
-            };
-            return Response.ok(stream).header("Content-Length", response.getSerializedSize()).build();
+            final StreamingResponseBody stream = resp::writeTo;
+
+            return ResponseEntity.ok(stream);
 
         } catch (Exception e) {
             logger.info("error mars hello3");
@@ -178,13 +165,7 @@ public class MarsController {
                     .setTopic(request.getTopic())
                     .build();
 
-            final StreamingResponseBody stream = new StreamingResponseBody() {
-                @Override
-                public void writeTo(OutputStream outputStream) throws IOException {
-                    response.writeTo(outputStream);
-
-                }
-            };
+            final StreamingResponseBody stream = response::writeTo;
             return ResponseEntity.ok(stream);
 
         } catch (Exception e) {
