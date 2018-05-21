@@ -11,10 +11,14 @@ import com.odib.bcp.eac.constant.CommonValue;
 import com.odib.bcp.eac.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <br>
@@ -25,48 +29,171 @@ import redis.clients.jedis.JedisPool;
  */
 @Service
 public class RedisServiceImpl implements RedisService{
-    @Value("${bcp.redis.prefix}")
-    private String PREFIX;
-
-    private static final String LOGIN_TOKEN = "login:token:";
-
-    private interface Nxxx{
-        /**
-         * 则只有当key已经存在时才进行set
-         */
-        String XX = "XX";
-        /**
-         * 则只有当key不存在时才进行set
-         */
-        String NX = "NX";
-    }
-    private interface Expx{
-        /**
-         * 按秒记
-         */
-        String EX = "EX";
-        /**
-         * 按毫秒记
-         */
-        String PX = "PX";
-    }
     @Autowired
-    private JedisPool jedisPool;
+    private RedisTemplate<String, String> redisTemplate;
+
     @Override
-    public void setLoginToken(String token, Integer idNo) {
-        getJedis().set(LOGIN_TOKEN + token, String.valueOf(idNo), Nxxx.NX, Expx.EX, CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
+    public void deleteFromRedis(String key) {
+        redisTemplate.delete(key);
     }
 
     @Override
-    public Integer getLoginToken(String token) {
-        String idNoStr = getJedis().get(LOGIN_TOKEN + token);
-        if(StringUtils.isEmpty(idNoStr)){
-           return null;
-        }
-        return Integer.valueOf(idNoStr);
+    public Boolean hashCheckHxists(String mapName, String field) {
+        return redisTemplate.opsForHash().hasKey(mapName, field);
     }
 
-    private Jedis getJedis(){
-        return jedisPool.getResource();
+    @Override
+    public Object hashGet(String tableName, String hashKey) {
+        return redisTemplate.opsForHash().get(tableName, hashKey);
+    }
+
+    @Override
+    public Map<Object, Object> hashGetAll(String key) {
+        return  redisTemplate.opsForHash().entries(key);
+    }
+
+    @Override
+    public Long hashIncrementLongOfHashMap(String hKey, String hashKey, Long delta) {
+        return redisTemplate.opsForHash().increment(hKey, hashKey, delta);
+    }
+
+    @Override
+    public Double hashIncrementDoubleOfHashMap(String hKey, String hashKey, Double delta) {
+        return redisTemplate.opsForHash().increment(hKey, hashKey, delta);
+    }
+
+    @Override
+    public void hashPushHashMap(String key, Object hashKey, Object value) {
+        redisTemplate.opsForHash().put(key, hashKey, value);
+    }
+
+    @Override
+    public Set<Object> hashGetAllHashKey(String key) {
+        return redisTemplate.opsForHash().keys(key);
+    }
+
+    @Override
+    public Long hashGetHashMapSize(String key) {
+        return redisTemplate.opsForHash().size(key);
+    }
+
+    @Override
+    public List<Object> hashGetHashAllValues(String key) {
+        return redisTemplate.opsForHash().values(key);
+    }
+
+    @Override
+    public Long hashDeleteHashKey(String key, Object... hashKeys) {
+        return redisTemplate.opsForHash().delete(key, hashKeys);
+    }
+
+    @Override
+    public void listLeftPushList(String key, String value) {
+        redisTemplate.opsForList().leftPush(key, value);
+    }
+
+    @Override
+    public String listLeftPopList(String key) {
+        return redisTemplate.opsForList().leftPop(key);
+    }
+
+    @Override
+    public Long listSize(String key) {
+        return redisTemplate.opsForList().size(key);
+    }
+
+    @Override
+    public List<String> listRangeList(String key, Long start, Long end) {
+        return redisTemplate.opsForList().range(key, start, end);
+    }
+
+    @Override
+    public Long listRemoveFromList(String key, long i, Object value) {
+        return redisTemplate.opsForList().remove(key, i, value);
+    }
+
+    @Override
+    public String listIndexFromList(String key, long index) {
+        return redisTemplate.opsForList().index(key, index);
+    }
+
+    @Override
+    public void listSetValueToList(String key, long index, String value) {
+        redisTemplate.opsForList().set(key, index, value);
+    }
+
+    @Override
+    public void listTrimByRange(String key, Long start, Long end) {
+        redisTemplate.opsForList().trim(key, start, end);
+    }
+
+    @Override
+    public void listRightPushList(String key, String value) {
+        redisTemplate.opsForList().rightPush(key, value);
+    }
+
+    @Override
+    public String listRightPopList(String key) {
+        return redisTemplate.opsForList().rightPop(key);
+    }
+
+    @Override
+    public Long setAddSetMap(String key, String... values) {
+        return redisTemplate.opsForSet().add(key, values);
+    }
+
+    @Override
+    public Long setGetSizeForSetMap(String key) {
+        return redisTemplate.opsForSet().size(key);
+    }
+
+    @Override
+    public Set<String> setGetMemberOfSetMap(String key) {
+        return redisTemplate.opsForSet().members(key);
+    }
+
+    @Override
+    public Boolean setCheckIsMemberOfSet(String key, Object o) {
+        return redisTemplate.opsForSet().isMember(key, o);
+    }
+
+    @Override
+    public Integer stringAppendString(String key, String value) {
+        return redisTemplate.opsForValue().append(key, value);
+    }
+
+    @Override
+    public String stringGetStringByKey(String key) {
+        return  redisTemplate.opsForValue().get(key);
+    }
+
+    @Override
+    public String stringGetSubStringFromString(String key, long start, long end) {
+        return redisTemplate.opsForValue().get(key, start, end);
+    }
+
+    @Override
+    public Long stringIncrementLongString(String key, Long delta) {
+        return redisTemplate.opsForValue().increment(key, delta);
+    }
+
+    @Override
+    public Double stringIncrementDoubleString(String key, Double delta) {
+        return redisTemplate.opsForValue().increment(key, delta);
+    }
+
+    @Override
+    public void stringSetString(String key, String value) {
+        redisTemplate.opsForValue().set(key, value);
+    }
+
+    @Override
+    public String stringGetAndSet(String key, String value) {
+        return redisTemplate.opsForValue().getAndSet(key, value);
+    }
+
+    @Override
+    public void stringSetValueAndExpireTime(String key, String value, long timeout) {
+        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.MILLISECONDS);
     }
 }

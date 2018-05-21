@@ -1,2 +1,4 @@
 include 'bcp.EnterpriseApplicationCustomization'
 include 'bcp.im'
+include 'bcp.common'
+

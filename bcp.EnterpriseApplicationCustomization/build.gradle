@@ -3,7 +3,7 @@ version '0.0.1'
 def env = System.getProperty("env") ?: "dev"
 buildscript {
     ext {
-        springBootVersion = '1.5.9.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
     }
     repositories {
         // NOTE: You should declare only repositories that you need here
@@ -14,15 +14,18 @@ buildscript {
         maven { url "http://repo.spring.io/snapshot" }
     }
     dependencies {
-        //使用1.5.9.RELEASE版本的Spring框架
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        //使用2.0.2.RELEASE版本的Spring框架
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
     }
 }
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-springBoot {
-    executable = true
+//springBoot {
+//    executable = true
+//}
+bootJar {
+    launchScript()
 }
 jar {
     manifest {
@@ -40,15 +43,19 @@ repositories {
 
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '6.8'
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
-    compile group: 'org.springframework.boot', name:'spring-boot-starter-web', version:'1.5.9.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.2.RELEASE'
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-web', version:'2.0.2.RELEASE'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version:'1.1.1'
-    compile group: 'org.springframework.boot', name:'spring-boot-starter-data-redis',version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-data-redis',version: '2.0.2.RELEASE'
     compile group: 'org.mybatis', name: 'mybatis', version: '3.4.5'
     compile group: 'com.alibaba', name:'fastjson', version:'1.2.44'
     compile group: 'com.alibaba', name: 'druid', version: '1.1.6'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.8-dmr'
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.0.2.RELEASE'
+    compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.5.0'
+
 }
 sourceSets {
     main {

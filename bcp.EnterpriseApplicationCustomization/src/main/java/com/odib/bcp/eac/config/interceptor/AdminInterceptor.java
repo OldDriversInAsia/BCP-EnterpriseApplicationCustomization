@@ -6,6 +6,7 @@ import com.odib.bcp.eac.constant.CommonValue;
 import com.odib.bcp.eac.exception.ApiException;
 import com.odib.bcp.eac.model.pojo.BaseUser;
 import com.odib.bcp.eac.service.BaseUserService;
+import com.odib.bcp.eac.service.LoginService;
 import com.odib.bcp.eac.service.RedisService;
 import com.odib.bcp.eac.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,15 @@ public class AdminInterceptor implements HandlerInterceptor {
     RedisService redisService;
     @Autowired
     BaseUserService baseUserService;
+    @Autowired
+    LoginService loginService;
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         String token = CookieUtils.getCookie(httpServletRequest, CommonValue.LOGIN_TOKEN_COOKIE_KEY);
         if (null == token) {
             throw new ApiException(ApiResultEnum.LOGIN_100004);
         }
-        Integer idNo = redisService.getLoginToken(token);
+        Integer idNo = loginService.getLoginToken(token);
         //结果为空 返回false 或者 用户信息空
         if (null == idNo) {
             throw new ApiException(ApiResultEnum.LOGIN_100004);

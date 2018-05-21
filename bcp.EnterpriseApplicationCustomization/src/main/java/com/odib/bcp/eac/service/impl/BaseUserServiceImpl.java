@@ -18,6 +18,7 @@ import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
 import com.odib.bcp.eac.model.vo.BaseUserVo;
 import com.odib.bcp.eac.service.BaseUserService;
+import com.odib.bcp.eac.service.LoginService;
 import com.odib.bcp.eac.util.CookieUtils;
 import com.odib.bcp.eac.util.PasswordUtil;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -53,6 +54,8 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     BaseUserMapper baseUserMapper;
     @Autowired
     RedisServiceImpl redisService;
+    @Autowired
+    LoginService loginService;
 
     @Override
     public GenericDao<BaseUser, Integer> getDao() {
@@ -81,7 +84,7 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
             throw new ApiException(ApiResultEnum.LOGIN_100001);
         }
         String token = DigestUtils.md5Hex(System.currentTimeMillis() + loginName);
-        redisService.setLoginToken(token, baseUser.getIdNo());
+        loginService.setLoginToken(token, baseUser.getIdNo());
         CookieUtils.addCookie(response, CommonValue.LOGIN_TOKEN_COOKIE_KEY, token, "/",CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
         return result;
     }

@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import redis.clients.jedis.JedisPool;
+//import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -32,8 +32,8 @@ public class TestController {
 
     @Autowired
     private RedisTemplate redisTemplate;
-    @Resource
-    private JedisPool jedisPool;
+//    @Resource
+//    private JedisPool jedisPool;
 
     @RequestMapping("/test")
     public String test(){
