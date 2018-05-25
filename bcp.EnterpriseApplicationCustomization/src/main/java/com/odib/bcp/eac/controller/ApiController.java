@@ -7,7 +7,6 @@
  */
 package com.odib.bcp.eac.controller;
 
-import com.odib.bcp.eac.constant.ApiResultEnum;
 import com.odib.bcp.eac.core.generic.ApiResult;
 import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
@@ -38,29 +37,27 @@ public class ApiController {
     @RequestMapping("/test")
     public ApiResult<String> test(String param){
         String data = "Your param is " + param;
-        ApiResult<String> result = ApiResultEnum.SUCCESS.build(data);
-        return result;
+        return ApiResult.success(data);
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ApiResult<BaseUser> getUser(@PathVariable Integer id){
         BaseUser baseUser = baseUserService.selectById(id);
-        ApiResult<BaseUser> result = ApiResultEnum.SUCCESS.build(baseUser);
-        return result;
+        return ApiResult.success(baseUser);
     }
 
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public ApiResult<List<BaseUserVo>> selectUserList(){
-        return baseUserService.selectUserVoList();
+        return ApiResult.success(baseUserService.selectUserVoList());
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ApiResult<Integer> insertUser(BaseUserDto baseUserDto){
-        return baseUserService.insert(baseUserDto);
+        return ApiResult.success(baseUserService.insert(baseUserDto));
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ApiResult<BaseUserVo> login(String loginName, String password, HttpServletResponse response){
-        return baseUserService.login(loginName, password, response);
+        return ApiResult.success(baseUserService.login(loginName, password, response));
     }
 }

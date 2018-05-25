@@ -7,6 +7,8 @@
  */
 package com.odib.bcp.eac.model.dto;
 
+import com.odib.bcp.eac.model.pojo.BaseUser;
+
 import java.util.Date;
 
 /**
@@ -66,6 +68,20 @@ public class BaseUserDto {
      * 身份证号
      */
     private String identity;
+
+    public BaseUser covertPojo(){
+        BaseUser baseUser = new BaseUser();
+        baseUser.setGraduate(this.getGraduate());
+        baseUser.setDiploma(this.getDiploma());
+        baseUser.setTelephone(this.getTelephone());
+        baseUser.setGender(this.getGender());
+        baseUser.setBirthday(new Date(this.getBirthday()));
+        baseUser.setName(this.getName());
+        baseUser.setPinyin(this.getPinyin());
+        baseUser.setEmail(this.getEmail());
+        baseUser.setIdentity(this.getIdentity());
+        return baseUser;
+    }
 
     public String getGraduate() {
         return graduate;
