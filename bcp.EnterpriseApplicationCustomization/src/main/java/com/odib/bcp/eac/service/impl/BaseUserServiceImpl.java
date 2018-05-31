@@ -7,8 +7,10 @@
  */
 package com.odib.bcp.eac.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.odib.bcp.eac.constant.ApiResultEnum;
 import com.odib.bcp.eac.constant.CommonValue;
+import com.odib.bcp.eac.core.orm.mybatis.Page;
 import com.odib.bcp.eac.dao.BaseUserMapper;
 import com.odib.bcp.eac.exception.ApiException;
 import com.odib.bcp.eac.core.generic.ApiResult;
@@ -136,38 +138,19 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     }
 
     @Override
-    public List<BaseUserVo> selectUserVoList() {
-        List<BaseUser> baseUserList = selectList();
+    public List<BaseUserVo> selectUserVoList(Integer pageNum, Integer pageSize) {
+        List<BaseUser> baseUserList = selectList(pageNum, pageSize);
         List<BaseUserVo> baseUserVoList = new ArrayList<>();
         baseUserList.forEach(baseUser -> baseUserVoList.add(BaseUserVo.covert(baseUser)));
         baseUserList.forEach(BaseUserVo::covert);
         return baseUserVoList;
     }
 
-    @Override
-    public List<BaseUser> selectList() {
-        return baseUserMapper.selectList();
+
+    private List<BaseUser> selectList(Integer pageNum, Integer pageSize) {
+        return PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> baseUserMapper.selectList());
     }
 
-    private BaseUser superAdmin(){
-        BaseUser baseUser = new BaseUser();
-        baseUser.setIdNo(0);
-        baseUser.setGraduate("哈尔滨理工大学");
-        baseUser.setDiploma(0);
-        baseUser.setTelephone("");
-        baseUser.setGender(0);
-        baseUser.setBirthday(new Date());
-        baseUser.setLoginname("admin");
-        baseUser.setName("管理员");
-        baseUser.setPinyin("admin");
-        baseUser.setPassword("");
-        baseUser.setSalt("");
-        baseUser.setStatus(0);
-        baseUser.setEmail("");
-        baseUser.setIdentity("");
-
-        return baseUser;
-    }
     private Integer getLoginNameLevel(String pinyin){
         Integer num = null;
         BaseUser baseUserExist = baseUserMapper.selectByPinYin(pinyin);

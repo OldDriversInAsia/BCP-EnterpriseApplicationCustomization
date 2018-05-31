@@ -24,7 +24,7 @@ public class PasswordUtil {
     }
 
     public static String createSalt(){
-        String md5 = DigestUtils.md5Hex(Long.toString(System.currentTimeMillis()).getBytes());
+        String md5 = DigestUtils.md5Hex(Long.toString(System.currentTimeMillis()));
         return md5.substring(0, SALT_LENGTH);
     }
 }
