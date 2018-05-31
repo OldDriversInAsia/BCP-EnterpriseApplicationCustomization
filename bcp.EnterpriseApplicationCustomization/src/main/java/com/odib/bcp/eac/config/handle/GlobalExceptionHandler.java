@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
             ApiException apiException = (ApiException) e;
             result = apiException.getApiResultEnum().build();
         }else{
-            log.error("server error:{},url:{},param:{}", e, req.getRequestURL(), req.getQueryString());
+            log.info("server error:{},url:{},param:{}", e, req.getRequestURL(), req.getQueryString());
             result = ApiResultEnum.FAILED.build();
         }
         return result;
