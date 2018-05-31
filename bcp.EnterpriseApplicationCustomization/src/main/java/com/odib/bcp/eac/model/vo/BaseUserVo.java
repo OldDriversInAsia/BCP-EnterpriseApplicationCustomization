@@ -8,6 +8,7 @@
 package com.odib.bcp.eac.model.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.odib.bcp.eac.model.pojo.BaseUser;
 
 import java.util.Date;
 
@@ -32,7 +33,23 @@ public class BaseUserVo {
     private Integer status;
     private String email;
     private String identity;
+    public static BaseUserVo covert(BaseUser baseUser){
+        BaseUserVo baseUserVo = new BaseUserVo();
+        baseUserVo.setIdNo(baseUser.getIdNo());
+        baseUserVo.setGraduate(baseUser.getGraduate());
+        baseUserVo.setDiploma(baseUser.getDiploma());
+        baseUserVo.setTelephone(baseUser.getTelephone());
+        baseUserVo.setGender(baseUser.getGender());
+        baseUserVo.setBirthday(baseUser.getBirthday());
+        baseUserVo.setLoginname(baseUser.getLoginname());
+        baseUserVo.setName(baseUser.getName());
+        baseUserVo.setPinyin(baseUser.getPinyin());
+        baseUserVo.setStatus(baseUser.getStatus());
+        baseUserVo.setEmail(baseUser.getEmail());
+        baseUserVo.setIdentity(baseUser.getIdentity());
 
+        return baseUserVo;
+    }
     public Integer getIdNo() {
         return idNo;
     }

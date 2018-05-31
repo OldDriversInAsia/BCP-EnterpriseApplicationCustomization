@@ -7,8 +7,10 @@
  */
 package com.odib.bcp.eac.controller;
 
-import com.odib.bcp.eac.constant.ApiResultEnum;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.odib.bcp.eac.core.generic.ApiResult;
+import com.odib.bcp.eac.core.orm.mybatis.Page;
 import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
 import com.odib.bcp.eac.model.vo.BaseUserVo;
@@ -20,7 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <br>
@@ -38,29 +43,42 @@ public class ApiController {
     @RequestMapping("/test")
     public ApiResult<String> test(String param){
         String data = "Your param is " + param;
-        ApiResult<String> result = ApiResultEnum.SUCCESS.build(data);
-        return result;
+        return ApiResult.success(data);
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ApiResult<BaseUser> getUser(@PathVariable Integer id){
         BaseUser baseUser = baseUserService.selectById(id);
-        ApiResult<BaseUser> result = ApiResultEnum.SUCCESS.build(baseUser);
-        return result;
+        return ApiResult.success(baseUser);
     }
 
-    @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public ApiResult<List<BaseUserVo>> selectUserList(){
-        return baseUserService.selectUserVoList();
+    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
+    public ApiResult<PageInfo<BaseUserVo>> selectUserList(Integer pageNum, Integer pageSize){
+        List<BaseUserVo> baseUserVoList = baseUserService.selectUserVoList(pageNum, pageSize);
+        return ApiResult.success(new PageInfo<>(baseUserVoList));
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ApiResult<Integer> insertUser(BaseUserDto baseUserDto){
-        return baseUserService.insert(baseUserDto);
+        return ApiResult.success(baseUserService.insert(baseUserDto));
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ApiResult<BaseUserVo> login(String loginName, String password, HttpServletResponse response){
-        return baseUserService.login(loginName, password, response);
+        return ApiResult.success(baseUserService.login(loginName, password, response));
+    }
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    public ApiResult<Map<String, String>> userLogin(String username, String password){
+        Map<String, String> map = new HashMap<>();
+        map.put("token", "admin");
+        return ApiResult.success(map);
+    }
+    @RequestMapping(value = "/user/info", method = RequestMethod.GET)
+    public ApiResult<Map<String, Object>> userInfo(String token){
+        Map<String, Object> result = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        list.add("admin");
+        result.put("roles", list);
+        return ApiResult.success(result);
     }
 }

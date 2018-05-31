@@ -7,8 +7,10 @@
  */
 package com.odib.bcp.eac.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.odib.bcp.eac.constant.ApiResultEnum;
 import com.odib.bcp.eac.constant.CommonValue;
+import com.odib.bcp.eac.core.orm.mybatis.Page;
 import com.odib.bcp.eac.dao.BaseUserMapper;
 import com.odib.bcp.eac.exception.ApiException;
 import com.odib.bcp.eac.core.generic.ApiResult;
@@ -68,8 +70,8 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     }
 
     @Override
-    public ApiResult<BaseUserVo> login(String loginName, String password, HttpServletResponse response) {
-        ApiResult<BaseUserVo> result;
+    public BaseUserVo login(String loginName, String password, HttpServletResponse response) {
+        BaseUserVo baseUserVo;
         BaseUser baseUser = selectByLoginName(loginName);
         if(null == baseUser){
             throw new ApiException(ApiResultEnum.LOGIN_100002);
@@ -79,14 +81,14 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
         }
         password = PasswordUtil.passwordHash(password, baseUser.getSalt());
         if(baseUser.getPassword().equals(password)){
-            result = ApiResultEnum.SUCCESS.build(convertVo(baseUser));
+            baseUserVo = BaseUserVo.covert(baseUser);
         }else{
             throw new ApiException(ApiResultEnum.LOGIN_100001);
         }
         String token = DigestUtils.md5Hex(System.currentTimeMillis() + loginName);
         loginService.setLoginToken(token, baseUser.getIdNo());
         CookieUtils.addCookie(response, CommonValue.LOGIN_TOKEN_COOKIE_KEY, token, "/",CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
-        return result;
+        return baseUserVo;
     }
 
     @Override
@@ -95,7 +97,7 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     }
 
     @Override
-    public ApiResult<Integer> insert(BaseUserDto baseUserDto) {
+    public Integer insert(BaseUserDto baseUserDto) {
         String pinyin = baseUserDto.getPinyin();
         Integer num = getLoginNameLevel(pinyin);
         String salt = PasswordUtil.createSalt();
@@ -106,19 +108,11 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
             loginName = loginName + num;
         }
 
-        BaseUser baseUser = new BaseUser();
-        baseUser.setGraduate(baseUserDto.getGraduate());
-        baseUser.setDiploma(baseUserDto.getDiploma());
-        baseUser.setTelephone(baseUserDto.getTelephone());
-        baseUser.setGender(baseUserDto.getGender());
-        baseUser.setBirthday(new Date(baseUserDto.getBirthday()));
+        BaseUser baseUser = baseUserDto.covertPojo();
+
         baseUser.setLoginname(loginName);
-        baseUser.setName(baseUserDto.getName());
-        baseUser.setPinyin(pinyin);
         baseUser.setPassword(password);
         baseUser.setSalt(salt);
-        baseUser.setEmail(baseUserDto.getEmail());
-        baseUser.setIdentity(baseUserDto.getIdentity());
 
         int resetTimes = 0;
         int row = 0;
@@ -140,22 +134,21 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
             }
         }
 
-        return ApiResultEnum.SUCCESS.build(row);
+        return row;
     }
 
     @Override
-    public ApiResult<List<BaseUserVo>> selectUserVoList() {
-        List<BaseUser> baseUserList = selectList();
+    public List<BaseUserVo> selectUserVoList(Integer pageNum, Integer pageSize) {
+        List<BaseUser> baseUserList = selectList(pageNum, pageSize);
         List<BaseUserVo> baseUserVoList = new ArrayList<>();
-        for(BaseUser baseUser : baseUserList){
-            baseUserVoList.add(convertVo(baseUser));
-        }
-        return ApiResultEnum.SUCCESS.build(baseUserVoList);
+        baseUserList.forEach(baseUser -> baseUserVoList.add(BaseUserVo.covert(baseUser)));
+        baseUserList.forEach(BaseUserVo::covert);
+        return baseUserVoList;
     }
 
-    @Override
-    public List<BaseUser> selectList() {
-        return baseUserMapper.selectList();
+
+    private List<BaseUser> selectList(Integer pageNum, Integer pageSize) {
+        return PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> baseUserMapper.selectList());
     }
 
     private Integer getLoginNameLevel(String pinyin){
@@ -172,22 +165,5 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
             num++;
         }
         return num;
-    }
-    private BaseUserVo convertVo(BaseUser baseUser){
-        BaseUserVo baseUserVo = new BaseUserVo();
-        baseUserVo.setIdNo(baseUser.getIdNo());
-        baseUserVo.setGraduate(baseUser.getGraduate());
-        baseUserVo.setDiploma(baseUser.getDiploma());
-        baseUserVo.setTelephone(baseUser.getTelephone());
-        baseUserVo.setGender(baseUser.getGender());
-        baseUserVo.setBirthday(baseUser.getBirthday());
-        baseUserVo.setLoginname(baseUser.getLoginname());
-        baseUserVo.setName(baseUser.getName());
-        baseUserVo.setPinyin(baseUser.getPinyin());
-        baseUserVo.setStatus(baseUser.getStatus());
-        baseUserVo.setEmail(baseUser.getEmail());
-        baseUserVo.setIdentity(baseUser.getIdentity());
-
-        return baseUserVo;
     }
 }

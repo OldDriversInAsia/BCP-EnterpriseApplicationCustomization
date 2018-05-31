@@ -20,12 +20,11 @@ public class PasswordUtil {
     private static final int SALT_LENGTH = 10;
 
     public static String passwordHash(String password, String salt){
-        String result = DigestUtils.sha1Hex(password + salt);
-        return result;
+        return DigestUtils.sha1Hex(String.format("%s%s", password, salt));
     }
 
     public static String createSalt(){
-        String md5 = DigestUtils.md5Hex(Long.toString(System.currentTimeMillis()).getBytes());
+        String md5 = DigestUtils.md5Hex(Long.toString(System.currentTimeMillis()));
         return md5.substring(0, SALT_LENGTH);
     }
 }

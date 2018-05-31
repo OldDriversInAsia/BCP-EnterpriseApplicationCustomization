@@ -7,6 +7,8 @@
  */
 package com.odib.bcp.eac.core.generic;
 
+import com.odib.bcp.eac.constant.ApiResultEnum;
+
 /**
  * <br>
  * 〈返回结果〉
@@ -28,8 +30,8 @@ public class ApiResult<T> {
         this.data = data;
     }
 
-    public static ApiResult success(Object data) {
-        return new ApiResult<>(data);
+    public static <T> ApiResult<T> success(T data) {
+        return ApiResultEnum.SUCCESS.build(data);
     }
 
     public Integer getCode() {
