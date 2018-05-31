@@ -33,11 +33,12 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ApiResult<?> errorHandler(HttpServletRequest req, Exception e) throws Exception{
         ApiResult<?> result;
+        log.error("发生异常", e);
         if(e instanceof ApiException){
             ApiException apiException = (ApiException) e;
             result = apiException.getApiResultEnum().build();
         }else{
-            log.info("server error:{},url:{},param:{}", e, req.getRequestURL(), req.getQueryString());
+            log.error("server error:{},url:{},param:{}", e, req.getRequestURL(), req.getQueryString());
             result = ApiResultEnum.FAILED.build();
         }
         return result;
