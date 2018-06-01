@@ -52,9 +52,9 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public ApiResult<Page<BaseUserVo>> selectUserList(Integer pageNum, Integer pageSize){
+    public ApiResult<PageInfo<BaseUserVo>> selectUserList(Integer pageNum, Integer pageSize){
         Page<BaseUserVo> baseUserVoList = baseUserService.selectUserVoList(pageNum, pageSize);
-        return ApiResult.success(baseUserVoList);
+        return ApiResult.success(new PageInfo<>(baseUserVoList));
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
