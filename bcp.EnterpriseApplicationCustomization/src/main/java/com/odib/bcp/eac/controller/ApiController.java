@@ -7,10 +7,9 @@
  */
 package com.odib.bcp.eac.controller;
 
-import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.odib.bcp.eac.core.generic.ApiResult;
-import com.odib.bcp.eac.core.orm.mybatis.Page;
 import com.odib.bcp.eac.model.dto.BaseUserDto;
 import com.odib.bcp.eac.model.pojo.BaseUser;
 import com.odib.bcp.eac.model.vo.BaseUserVo;
@@ -53,9 +52,9 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public ApiResult<PageInfo<BaseUserVo>> selectUserList(Integer pageNum, Integer pageSize){
-        List<BaseUserVo> baseUserVoList = baseUserService.selectUserVoList(pageNum, pageSize);
-        return ApiResult.success(new PageInfo<>(baseUserVoList));
+    public ApiResult<Page<BaseUserVo>> selectUserList(Integer pageNum, Integer pageSize){
+        Page<BaseUserVo> baseUserVoList = baseUserService.selectUserVoList(pageNum, pageSize);
+        return ApiResult.success(baseUserVoList);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)

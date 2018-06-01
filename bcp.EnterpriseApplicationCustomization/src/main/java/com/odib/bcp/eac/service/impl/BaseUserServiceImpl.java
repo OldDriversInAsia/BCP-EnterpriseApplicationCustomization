@@ -7,13 +7,12 @@
  */
 package com.odib.bcp.eac.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.odib.bcp.eac.constant.ApiResultEnum;
 import com.odib.bcp.eac.constant.CommonValue;
-import com.odib.bcp.eac.core.orm.mybatis.Page;
 import com.odib.bcp.eac.dao.BaseUserMapper;
 import com.odib.bcp.eac.exception.ApiException;
-import com.odib.bcp.eac.core.generic.ApiResult;
 import com.odib.bcp.eac.core.generic.GenericDao;
 import com.odib.bcp.eac.core.generic.GenericServiceImpl;
 import com.odib.bcp.eac.model.dto.BaseUserDto;
@@ -32,7 +31,6 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -138,16 +136,28 @@ public class BaseUserServiceImpl extends GenericServiceImpl<BaseUser, Integer> i
     }
 
     @Override
-    public List<BaseUserVo> selectUserVoList(Integer pageNum, Integer pageSize) {
-        List<BaseUser> baseUserList = selectList(pageNum, pageSize);
-        List<BaseUserVo> baseUserVoList = new ArrayList<>();
+    public Page<BaseUserVo> selectUserVoList(Integer pageNum, Integer pageSize) {
+        Page<BaseUser> baseUserList = selectList(pageNum, pageSize);
+        Page<BaseUserVo> baseUserVoList = new Page<>();
+        baseUserVoList.setPages(baseUserList.getPages());
+        baseUserVoList.setEndRow(baseUserList.getEndRow());
+        baseUserVoList.setPageNum(baseUserList.getPageNum());
+        baseUserVoList.setPageSize(baseUserList.getPageSize());
+        baseUserVoList.setStartRow(baseUserList.getStartRow());
+        baseUserVoList.setTotal(baseUserList.getTotal());
+        baseUserVoList.setReasonable(baseUserList.getReasonable());
+        baseUserVoList.setPageSizeZero(baseUserList.getPageSizeZero());
+        baseUserVoList.setOrderBy(baseUserList.getOrderBy());
+        baseUserVoList.setOrderByOnly(baseUserList.isOrderByOnly());
+        baseUserVoList.setCount(baseUserList.isCount());
+        baseUserVoList.setCountColumn(baseUserList.getCountColumn());
+
         baseUserList.forEach(baseUser -> baseUserVoList.add(BaseUserVo.covert(baseUser)));
-        baseUserList.forEach(BaseUserVo::covert);
         return baseUserVoList;
     }
 
 
-    private List<BaseUser> selectList(Integer pageNum, Integer pageSize) {
+    private Page<BaseUser> selectList(Integer pageNum, Integer pageSize) {
         return PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> baseUserMapper.selectList());
     }
 
