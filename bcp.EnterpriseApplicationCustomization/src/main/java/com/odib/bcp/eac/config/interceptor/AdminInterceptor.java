@@ -10,6 +10,7 @@ import com.odib.bcp.eac.service.LoginService;
 import com.odib.bcp.eac.service.RedisService;
 import com.odib.bcp.eac.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +35,9 @@ public class AdminInterceptor implements HandlerInterceptor {
     LoginService loginService;
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+        if(HttpMethod.GET.toString().equals(httpServletRequest.getMethod())){
+            return true;
+        }
         String token = CookieUtils.getCookie(httpServletRequest, CommonValue.LOGIN_TOKEN_COOKIE_KEY);
         if (null == token) {
             throw new ApiException(ApiResultEnum.LOGIN_100004);
