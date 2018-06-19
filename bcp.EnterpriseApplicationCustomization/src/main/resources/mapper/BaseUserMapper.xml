@@ -33,6 +33,7 @@
     SELECT
     <include refid="Base_Column_List" />
     FROM base_user
+    WHERE status = 1
   </select>
   <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT
