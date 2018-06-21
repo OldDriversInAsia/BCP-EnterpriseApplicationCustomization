@@ -68,13 +68,13 @@ public class ApiController {
     }
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ApiResult<Map<String, String>> userLogin(String username, String password){
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(1);
         map.put("token", "admin");
         return ApiResult.success(map);
     }
     @RequestMapping(value = "/user/info", method = RequestMethod.GET)
     public ApiResult<Map<String, Object>> userInfo(String token){
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>(1);
         List<String> list = new ArrayList<>();
         list.add("admin");
         result.put("roles", list);

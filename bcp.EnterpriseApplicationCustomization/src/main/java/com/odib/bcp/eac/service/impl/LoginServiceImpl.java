@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService{
     private RedisService redisService;
     @Override
     public void setLoginToken(String token, Integer idNo) {
-        redisService.stringSetValueAndExpireTime(LOGIN_TOKEN + token, String.valueOf(idNo), CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60);
+        redisService.stringSetValueAndExpireTime(LOGIN_TOKEN + token, String.valueOf(idNo), CommonValue.LOGIN_TOKEN_COOKIE_TIME_HOUR * 60 * 60 * 1000);
     }
 
     @Override
